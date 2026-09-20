@@ -39,6 +39,17 @@ def calculate_direct_distance(lat1, lon1, lat2, lon2):
 # ---------------------------------------------------------
 # 2. 画面UIの作成
 # ---------------------------------------------------------
+# 見出し横のアンカーリンク（クリップマーク）を非表示にするCSS
+st.markdown("""
+    <style>
+    .a11y-anchor {
+        display: none !important;
+    }
+    .stMarkdown h3 a {
+        display: none !important;
+    }
+    </style>
+""", unsafe_allow_html=True)
 st.title("⛳ ゴルフ場案内チャット")
 
 st.subheader("検索条件を入力してください")
@@ -142,7 +153,7 @@ if st.button("ゴルフ場を探す"):
 
                 if results:
                     for item in results:
-                        st.markdown(f"### ⛳ [{item['name']}]({item['url']})", anchor=False)
+                        st.markdown(f"### ⛳ [{item['name']}]({item['url']})")
                         st.write(f"🚗 **所要時間**: 約 {item['duration']} 分 （距離: {item['distance']}）")
                         st.markdown(f"📍 **住所**: [{item['address']}]({item['map_url']})")
                         st.divider()
