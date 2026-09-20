@@ -142,7 +142,7 @@ if st.button("ゴルフ場を探す"):
 
                 if results:
                     for item in results:
-                        st.markdown(f"### ⛳ [{item['name']}]({item['url']})")
+                        st.markdown(f"### ⛳ [{item['name']}]({item['url']})", anchor=False)
                         st.write(f"🚗 **所要時間**: 約 {item['duration']} 分 （距離: {item['distance']}）")
                         st.markdown(f"📍 **住所**: [{item['address']}]({item['map_url']})")
                         st.divider()
