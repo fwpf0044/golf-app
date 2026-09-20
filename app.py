@@ -8,7 +8,8 @@ from datetime import datetime
 # ---------------------------------------------------------
 # 1. APIキーの設定
 # ---------------------------------------------------------
-API_KEY = "AIzaSyDL_dX9AiBwAy5NYFSP3NIOETwKpyq3fDg"  # ★ご自身のGoogle Maps APIキーを貼り付け
+import os
+API_KEY = st.secrets.get("GOOGLE_MAPS_API_KEY", os.environ.get("GOOGLE_MAPS_API_KEY"))
 gmaps = googlemaps.Client(key=API_KEY)
 
 # CSVデータの読み込み
