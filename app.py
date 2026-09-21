@@ -65,7 +65,7 @@ time_limit_mapping = {
 }
 max_minutes = time_limit_mapping[time_option]
 
-if st.button("条件で探す", key="btn_area"):
+if st.button("この条件で探す", key="btn_area"):
     if not user_address:
         st.warning("住所を入力してください。")
     else:
@@ -176,7 +176,7 @@ user_address_single = st.text_input(
 course_list = ["（入力して選択）"] + sorted(golf_df['golf_name'].dropna().unique().tolist())
 selected_course = st.selectbox("ゴルフ場名を選択", options=course_list)
 
-if st.button("このゴルフ場まで時間・距離を調べる", key="btn_single"):
+if st.button("このゴルフ場までの時間・距離を調べる", key="btn_single"):
     if not user_address_single:
         st.warning("ご自宅の住所を入力してください。")
     elif selected_course == "（選択してください）":
