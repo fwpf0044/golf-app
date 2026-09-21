@@ -176,7 +176,7 @@ user_address_single = st.text_input(
 course_list = ["（入力して選択）"] + sorted(golf_df['golf_name'].dropna().unique().tolist())
 selected_course = st.selectbox("ゴルフ場名を選択", options=course_list)
 
-if st.button("このゴルフ場まで時間を調べる", key="btn_single"):
+if st.button("このゴルフ場までの時間を調べる", key="btn_single"):
     if not user_address_single:
         st.warning("ご自宅の住所を入力してください。")
     elif selected_course == "（選択してください）":
