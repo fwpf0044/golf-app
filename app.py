@@ -39,13 +39,13 @@ def calculate_direct_distance(lat1, lon1, lat2, lon2):
 # ---------------------------------------------------------
 # UI設定
 # ---------------------------------------------------------
-st.title("⛳ ゴルフ場検索チャット(β版)")
-st.caption("※現在の道路状況や渋滞情報を考慮してゴルフ場までの時間を検索できます。")
+st.title("⛳ 所要時間でゴルフ場検索(β版)")
+st.caption("※現在の道路状況や渋滞情報を考慮して、主なゴルフ場までの時間を検索できます。")
 
 # ---------------------------------------------------------
 # 機能1: 時間指定で広域検索
 # ---------------------------------------------------------
-st.subheader("車の所要時間でゴルフ場を探す")
+st.subheader("車の移動時間でゴルフ場を探す")
 user_address = st.text_input(
     "ご自宅の住所", 
     placeholder="例: 東京都港区新橋 / 大阪府大阪市北区梅田",
@@ -173,7 +173,7 @@ user_address_single = st.text_input(
 )
 
 # ゴルフ場名一覧を作成（ドロップダウンから選択）
-course_list = ["（選択してください）"] + sorted(golf_df['golf_name'].dropna().unique().tolist())
+course_list = ["（入力して選択）"] + sorted(golf_df['golf_name'].dropna().unique().tolist())
 selected_course = st.selectbox("ゴルフ場名を選択", options=course_list)
 
 if st.button("このゴルフ場まで時間・距離を調べる", key="btn_single"):
