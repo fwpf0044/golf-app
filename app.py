@@ -162,14 +162,8 @@ user_address_single = st.text_input(
 )
 
 # ゴルフ場名一覧を作成（ドロップダウンまたは直接入力可能）
-course_list = ["（選択してください）"] + sorted(golf_df['golf_name'].dropna().unique().tolist())
+course_list = ["（入力して候補を探す）"] + sorted(golf_df['golf_name'].dropna().unique().tolist())
 selected_course = st.selectbox("ゴルフ場名を選択", options=course_list)
-
-manual_course_name = st.text_input(
-    "またはゴルフ場名を直接入力", 
-    placeholder="例: よみうりゴルフ倶楽部",
-    key="manual_course"
-)
 
 if st.button("このゴルフ場まで時間・距離を調べる", key="btn_single"):
     target_course = manual_course_name.strip() if manual_course_name.strip() else (selected_course if selected_course != "（選択してください）" else "")
