@@ -44,7 +44,7 @@ GC1042,函館ベイコーストカントリークラブ,049-0133 北海道北斗
 GC1043,ハッピーバレーゴルフクラブ札幌,061-0202 北海道石狩郡当別町茂平沢３３８２,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=115109&order_key=gd_course_title_kana&order_method=asc,43.2424735,141.5436536
 GC1044,羊ヶ丘カントリークラブ,062-0039 北海道札幌市豊平区西岡５４９,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=115203&order_key=gd_course_title_kana&order_method=asc,42.9670113,141.3911414
 GC1045,フォレスト旭川カントリークラブ,070-8034 北海道旭川市神居町上雨紛４３０,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=112208&order_key=gd_course_title_kana&order_method=asc,43.704955,142.363397
-GC1046,北海道カントリークラブ大沼コース,041-1355 北海道亀田郡七飯町西大沼,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=115501&order_key=gd_course_title_kana&order_method=asc,,
+GC1046,北海道カントリークラブ大沼コース,041-1355 北海道亀田郡七飯町西大沼,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=115501&order_key=gd_course_title_kana&order_method=asc,41.9892456,140.6550143
 GC1047,北海道ブルックスカントリークラブ,059-1365 北海道苫小牧市植苗４３７,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=113505&order_key=gd_course_title_kana&order_method=asc,42.7222222,141.6694444
 GC1048,真駒内カントリークラブ,005-0863 北海道札幌市南区常盤２００,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=116101&order_key=gd_course_title_kana&order_method=asc,42.9052629,141.3321372
 GC1049,室蘭ゴルフ倶楽部,050-0055 北海道室蘭市崎守町２９３−１,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=116304&order_key=gd_course_title_kana&order_method=asc,42.3847794,140.955253
@@ -84,7 +84,7 @@ GC1082,小名浜オーシャンホテル＆ゴルフクラブ,971-8183 福島県
 GC1083,小名浜カントリー倶楽部,970-0317 福島県いわき市小名浜上神白東大沢１−４４,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=260501&order_key=gd_course_title_kana&order_method=asc,36.973932,140.9403263
 GC1084,グランディ那須白河ゴルフクラブ,961-8091 福島県西白河郡西郷村熊倉雀子山３,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=262103&order_key=gd_course_title_kana&order_method=asc,37.1474589,140.1646099
 GC1085,郡山熱海カントリークラブ,963-1302 福島県郡山市熱海町高玉株原１−１,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=261502&order_key=gd_course_title_kana&order_method=asc,37.5186708,140.2961036
-GC1086,塩屋崎カントリークラブ,970-0222 福島県いわき市平沼ノ内町田２７９−１,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=262201&order_key=gd_course_title_kana&order_method=asc,37,140.958633
+GC1086,塩屋崎カントリークラブ,970-0222 福島県いわき市平沼ノ内町田２７９−１,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=262201&order_key=gd_course_title_kana&order_method=asc,37.0,140.958633
 GC1087,白河高原カントリークラブ,961-8071 福島県西白河郡西郷村真船欠入１−１,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=262204&order_key=gd_course_title_kana&order_method=asc,37.1720197,140.0355001
 GC1088,白河国際カントリークラブ,961-0301 福島県白河市東下野出島中子山２０−１７,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=262205&order_key=gd_course_title_kana&order_method=asc,37.0896627,140.3853116
 GC1089,スパリゾートハワイアンズ・ゴルフコース,972-8336 福島県いわき市渡辺町上釜戸橋ノ上２１６ スパリゾートハワイアンズゴルフコース,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=260202&order_key=gd_course_title_kana&order_method=asc,36.9901971,140.8014969
@@ -292,7 +292,7 @@ GC1290,寄居カントリークラブ,369-1215 埼玉県大里郡寄居町牟礼
 GC1291,嵐山カントリークラブ,355-0225 埼玉県比企郡嵐山町鎌形１１４６,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=348101&order_key=gd_course_title_kana&order_method=asc,36.0200004,139.3220062
 GC1292,リバーサイドフェニックスゴルフクラブ,362-0059 埼玉県上尾市平方２６０６−１,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=348201&order_key=gd_course_title_kana&order_method=asc,35.9463835,139.5460962
 GC1293,アクアラインゴルフクラブ,292-0201 千葉県木更津市真里谷４３４５−３,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=351114&order_key=gd_course_title_kana&order_method=asc,35.3749523,140.0880362
-GC1294,麻倉ゴルフ倶楽部,285-0077 千葉県佐倉市内田６７０,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=350106&order_key=gd_course_title_kana&order_method=asc,,
+GC1294,麻倉ゴルフ倶楽部,285-0077 千葉県佐倉市内田６７０,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=350106&order_key=gd_course_title_kana&order_method=asc,35.634275,140.236176
 GC1295,姉ヶ崎カントリー倶楽部,299-0121 千葉県市原市立野１６５−１,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=350101&order_key=gd_course_title_kana&order_method=asc,35.4377959,140.0810302
 GC1296,アバイディングクラブゴルフソサエティ,297-0155 千葉県長生郡長南町竹林10,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=350103&order_key=gd_course_title_kana&order_method=asc,35.3804484,140.2195661
 GC1297,我孫子ゴルフ倶楽部,270-1137 千葉県我孫子市岡発戸１１１０,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=350102&order_key=gd_course_title_kana&order_method=asc,35.8675605,140.051136
@@ -346,7 +346,7 @@ GC1344,立野クラシックゴルフ倶楽部,290-0242 千葉県市原市中高
 GC1345,館山カントリークラブ,294-0311 千葉県館山市坂井772ｰ54,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=353104&order_key=gd_course_title_kana&order_method=asc,34.95204349999999,139.810399
 GC1346,大千葉カントリー倶楽部,290-0524 千葉県市原市平蔵３３１０,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=353101&order_key=gd_course_title_kana&order_method=asc,35.361602,140.199159
 GC1347,千葉夷隅ゴルフクラブ,298-0261 千葉県夷隅郡大多喜町板谷５８８,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=351301&order_key=gd_course_title_kana&order_method=asc,35.2511759,140.1845964
-GC1348,千葉カントリークラブ,278-0021 千葉県野田市堤根167,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=353201&order_key=gd_course_title_kana&order_method=asc,,
+GC1348,千葉カントリークラブ,278-0021 千葉県野田市堤根167,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=353201&order_key=gd_course_title_kana&order_method=asc,35.9410004,139.8946466
 GC1349,千葉国際カントリークラブ,297-0231 千葉県長生郡長柄町山之郷７５４−３２,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=353206&order_key=gd_course_title_kana&order_method=asc,35.4832872,140.2100694
 GC1350,千葉桜の里ゴルフクラブ,289-0406 千葉県香取市田部１４３４,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=353208&order_key=gd_course_title_kana&order_method=asc,35.81688,140.576736
 GC1351,千葉新日本ゴルフ倶楽部,290-0212 千葉県市原市新巻８５０,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=353207&order_key=gd_course_title_kana&order_method=asc,35.422373,140.163873
@@ -424,7 +424,7 @@ GC1422,チェックメイトカントリークラブ,258-0003 神奈川県足柄
 GC1423,津久井湖ゴルフ倶楽部,252-0159 神奈川県相模原市緑区三ケ木４９２,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=373301&order_key=gd_course_title_kana&order_method=asc,35.5853347,139.2364196
 GC1424,東京カントリー倶楽部,257-0023 神奈川県秦野市寺山１４５０,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=375107&order_key=gd_course_title_kana&order_method=asc,35.4008059,139.2436104
 GC1425,東京ロイヤルゴルフ倶楽部,243-0308 神奈川県愛甲郡愛川町三増１７６４−４,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=373102&order_key=gd_course_title_kana&order_method=asc,35.5456603,139.3067074
-GC1426,東名厚木カントリー倶楽部,243-0308 神奈川県愛甲郡愛川町三増２６０７,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=373501&order_key=gd_course_title_kana&order_method=asc,,
+GC1426,東名厚木カントリー倶楽部,243-0308 神奈川県愛甲郡愛川町三増２６０７,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=373501&order_key=gd_course_title_kana&order_method=asc,35.5409537,139.2892818
 GC1427,戸塚カントリー倶楽部,241-0834 神奈川県横浜市旭区大池町２６,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=373502&order_key=gd_course_title_kana&order_method=asc,35.4436613,139.5377083
 GC1428,中津川カントリークラブ,243-0202 神奈川県厚木市中荻野１９４１−１,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=374102&order_key=gd_course_title_kana&order_method=asc,35.51823030000001,139.3098742
 GC1429,長竹カントリークラブ,252-0154 神奈川県相模原市緑区長竹１８３８ 長竹ＣＣ,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=374101&order_key=gd_course_title_kana&order_method=asc,35.5603934,139.2628872
@@ -460,7 +460,7 @@ GC1458,呉羽カントリークラブ,930-0155 富山県富山市三熊１９−
 GC1459,千羽平ゴルフクラブ,932-0124 富山県小矢部市蓑輪 千羽山 24番地,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=542401&order_key=gd_course_title_kana&order_method=asc,36.6120422,136.8733732
 GC1460,太閤山カントリークラブ,939-0323 富山県射水市平野１,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=543103&order_key=gd_course_title_kana&order_method=asc,36.6805373,137.0978941
 GC1461,高岡カントリー倶楽部,939-1263 富山県高岡市御坊山８７６,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=543101&order_key=gd_course_title_kana&order_method=asc,36.67124099999999,137.0455212
-GC1462,トナミロイヤルゴルフ倶楽部,939-1895 富山県南砺市井口１３－１ ,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=543502&order_key=gd_course_title_kana&order_method=asc,,
+GC1462,トナミロイヤルゴルフ倶楽部,939-1895 富山県南砺市井口１３－１ ,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=543502&order_key=gd_course_title_kana&order_method=asc,36.52029720000001,136.9373083
 GC1463,富山カントリークラブ,939-2204 富山県富山市万願寺1−１６６,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=543501&order_key=gd_course_title_kana&order_method=asc,36.5873983,137.2398129
 GC1464,花尾カントリークラブ,939-0153 富山県高岡市福岡町花尾５,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=545101&order_key=gd_course_title_kana&order_method=asc,36.7502796,136.8984625
 GC1465,氷見カントリークラブ,935-0414 富山県氷見市白川３５,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=545201&order_key=gd_course_title_kana&order_method=asc,36.9122253,136.9939572
@@ -562,7 +562,7 @@ GC1560,瑞陵ゴルフ倶楽部,509-6101 岐阜県瑞浪市土岐町８２６３
 GC1561,三甲谷汲カントリークラブ,501-1303 岐阜県揖斐郡揖斐川町谷汲長瀬 乾谷,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=521209&order_key=gd_course_title_kana&order_method=asc,35.53698869999999,136.6169371
 GC1562,中部国際ゴルフクラブ,509-0233 岐阜県可児市柿下１２６−２,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=523201&order_key=gd_course_title_kana&order_method=asc,35.388412,137.120179
 GC1563,TOSHIN GC Central,501-3307 岐阜県加茂郡富加町大平賀９５０,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=523502&order_key=gd_course_title_kana&order_method=asc,35.504271,136.956102
-GC1564,中仙道ゴルフ倶楽部,509-6471 岐阜県瑞浪市大湫町６２１−１,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=524101&order_key=gd_course_title_kana&order_method=asc,,
+GC1564,中仙道ゴルフ倶楽部,509-6471 岐阜県瑞浪市大湫町６２１−１,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=524101&order_key=gd_course_title_kana&order_method=asc,35.4385741,137.3057173
 GC1565,長良川カントリー倶楽部,502-0071 岐阜県岐阜市長良 北裏山８６２−８,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=524102&order_key=gd_course_title_kana&order_method=asc,35.4503012,136.7965991
 GC1566,日本ラインゴルフ倶楽部,509-0253 岐阜県可児市室原８７,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=524201&order_key=gd_course_title_kana&order_method=asc,35.3947271,137.028472
 GC1567,花の木ゴルフクラブ,509-6251 岐阜県瑞浪市日吉町８６７５−１,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=525101&order_key=gd_course_title_kana&order_method=asc,35.4344493,137.2091983
@@ -656,7 +656,7 @@ GC1654,ザ･トラディションゴルフクラブ,444-3165 愛知県岡崎市
 GC1655,品野台カントリークラブ,480-1214 愛知県瀬戸市上品野町１３５０,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=512201&order_key=gd_course_title_kana&order_method=asc,35.2666197,137.1367455
 GC1656,新城カントリー倶楽部,441-1338 愛知県新城市一鍬田赤座ケ入１−１,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=512204&order_key=gd_course_title_kana&order_method=asc,34.8589225,137.4868569
 GC1657,新南愛知カントリークラブ美浜コース,470-3235 愛知県知多郡美浜町野間内扇４３,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=516203&order_key=gd_course_title_kana&order_method=asc,34.7620231,136.8649688
-GC1658,セントクリークゴルフクラブ,444-2527 愛知県 豊田市月原町黒木1-1,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=512401&order_key=gd_course_title_kana&order_method=asc,,
+GC1658,セントクリークゴルフクラブ,444-2527 愛知県 豊田市月原町黒木1-1,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=512401&order_key=gd_course_title_kana&order_method=asc,35.1717965,137.2829589
 GC1659,知多カントリー倶楽部,470-2531 愛知県知多郡武豊町冨貴久原１−１１１,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=513201&order_key=gd_course_title_kana&order_method=asc,34.8167384,136.8936032
 GC1660,貞宝カントリークラブ,471-0059 愛知県豊田市貞宝町貞宝８,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=513401&order_key=gd_course_title_kana&order_method=asc,35.1069793,137.1338653
 GC1661,東海カントリークラブ,442-0863 愛知県豊川市平尾町糠川１１−３１,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=513501&order_key=gd_course_title_kana&order_method=asc,34.8478591,137.3287567
@@ -684,7 +684,7 @@ GC1682,桑名カントリー倶楽部,511-0941 三重県桑名市嘉例川８６
 GC1683,桑名国際ゴルフ倶楽部,511-0244 三重県員弁郡東員町大木２９２９,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=531303&order_key=gd_course_title_kana&order_method=asc,35.1057587,136.5879189
 GC1684,グリーンハイランドカントリー倶楽部,518-0606 三重県名張市薦生 大峯１１１６−３,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=531301&order_key=gd_course_title_kana&order_method=asc,34.644909,136.071182
 GC1685,グレイスヒルズカントリー倶楽部,512-1211 三重県四日市市桜町池之谷２２３０,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=531305&order_key=gd_course_title_kana&order_method=asc,34.9966023,136.5209259
-GC1686,COCOPA RESORT CLUB 白山ヴィレッジゴルフコース,住所検索中,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=535103&order_key=gd_course_title_kana&order_method=asc,,
+GC1686,COCOPA RESORT CLUB 白山ヴィレッジゴルフコース,515-2603 三重県津市白山町川口６２６２,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=535103&order_key=gd_course_title_kana&order_method=asc,34.6368892,136.3671415
 GC1687,COCOPA RESORT CLUB 三重白山ゴルフコース,515-2603 三重県津市白山町川口４９０７,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=536202&order_key=gd_course_title_kana&order_method=asc,34.6325723,136.3415766
 GC1688,榊原温泉ゴルフ倶楽部,514-1251 三重県津市榊原町１６２２ 榊原温泉ゴルフ倶楽部,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=535303&order_key=gd_course_title_kana&order_method=asc,34.7161457,136.3722188
 GC1689,榊原ゴルフ倶楽部,515-2601 三重県津市白山町三ヶ野１３３５,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=532101&order_key=gd_course_title_kana&order_method=asc,34.6639397,136.3861254
@@ -878,7 +878,7 @@ GC1877,飛鳥カンツリー倶楽部,631-0072 奈良県奈良市二名７丁目
 GC1878,宇陀カントリークラブ,633-2126 奈良県宇陀市大宇陀岩清水23番地,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=650301&order_key=gd_course_title_kana&order_method=asc,34.486592,135.9441981
 GC1879,オークモントゴルフクラブ,630-2232 奈良県山辺郡山添村岩屋３３１６,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=650501&order_key=gd_course_title_kana&order_method=asc,34.625843,136.0677331
 GC1880,春日台カントリークラブ,632-0122 奈良県天理市福住町７４５３,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=651101&order_key=gd_course_title_kana&order_method=asc,34.5998001,135.9275054
-GC1881,木津川カントリー倶楽部,630-1102 奈良県奈良市下狭川町１８２４,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=651201&order_key=gd_course_title_kana&order_method=asc,,
+GC1881,木津川カントリー倶楽部,630-1102 奈良県奈良市下狭川町１８２４,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=651201&order_key=gd_course_title_kana&order_method=asc,34.7397877,135.9206089
 GC1882,グランデージゴルフ倶楽部,639-3323 奈良県吉野郡吉野町色生８１０−１,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=651301&order_key=gd_course_title_kana&order_method=asc,34.4051246,135.9168162
 GC1883,KOMAカントリークラブ,630-2301 奈良県奈良市月ヶ瀬石打１４５６,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=651501&order_key=gd_course_title_kana&order_method=asc,34.7337726,136.0501816
 GC1884,新奈良ゴルフ倶楽部,630-1122 奈良県奈良市平清水町８５,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=654104&order_key=gd_course_title_kana&order_method=asc,34.6961563,135.8948429
@@ -927,7 +927,7 @@ GC1926,岡山霞橋ゴルフ倶楽部,712-8001 岡山県倉敷市連島町西之
 GC1927,岡山カントリークラブ桃の郷コース,701-1154 岡山県岡山市北区田益４８３−１,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=730502&order_key=gd_course_title_kana&order_method=asc,34.7166136,133.8926586
 GC1928,岡山金陵カントリークラブ,701-1527 岡山県岡山市北区石妻８９０,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=730508&order_key=gd_course_title_kana&order_method=asc,34.775591,133.858414
 GC1929,岡山国際ゴルフ倶楽部,719-1103 岡山県総社市西阿曽１８００,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=730503&order_key=gd_course_title_kana&order_method=asc,34.7126145,133.7720571
-GC1930,岡山ゴルフ倶楽部,710-0016 岡山県倉敷市中庄２７６９−２,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=730504&order_key=gd_course_title_kana&order_method=asc,,
+GC1930,岡山ゴルフ倶楽部,710-0016 岡山県倉敷市中庄２７６９−２,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=730504&order_key=gd_course_title_kana&order_method=asc,34.6095616,133.8018313
 GC1931,長船カントリークラブ,701-4265 岡山県瀬戸内市長船町福岡４９−１,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=730507&order_key=gd_course_title_kana&order_method=asc,34.7086584,134.0920755
 GC1932,笠岡カントリー倶楽部,714-0003 岡山県笠岡市尾坂字北山１３６１−３,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=731101&order_key=gd_course_title_kana&order_method=asc,34.5784585,133.5553845
 GC1933,鬼ノ城ゴルフ倶楽部,719-1101 岡山県総社市奥坂６６６,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=731203&order_key=gd_course_title_kana&order_method=asc,34.7305521,133.7872814
@@ -939,7 +939,7 @@ GC1938,瀬戸大橋カントリークラブ,706-0151 岡山県玉野市滝１６
 GC1939,玉野ゴルフ倶楽部,706-0011 岡山県玉野市宇野６丁目１−１−１,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=733101&order_key=gd_course_title_kana&order_method=asc,34.497851,133.927205
 GC1940,日本原カンツリー倶楽部,709-4221 岡山県美作市瀬戸２７６−３,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=734201&order_key=gd_course_title_kana&order_method=asc,35.0556823,134.2343745
 GC1941,湯郷石橋ゴルフ倶楽部,707-0061 岡山県美作市中山９１８,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=737301&order_key=gd_course_title_kana&order_method=asc,35.0058988,134.1253551
-GC1942,太田川ゴルフ倶楽部,731-0112 広島県広島市安佐南区東原１ー２２−１１,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=740501&order_key=gd_course_title_kana&order_method=asc,,
+GC1942,太田川ゴルフ倶楽部,731-0112 広島県広島市安佐南区東原１ー２２−１１,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=740501&order_key=gd_course_title_kana&order_method=asc,34.44008640000001,132.4777957
 GC1943,尾道うずしおカントリークラブ,722-0202 広島県尾道市原田町梶山田１０６９,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=740502&order_key=gd_course_title_kana&order_method=asc,34.4684448,133.2055358
 GC1944,尾道カントリークラブ宇根山コース,722-1122 広島県世羅郡世羅町小世良１０６９１−１５,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=740503&order_key=gd_course_title_kana&order_method=asc,34.5549674,133.0788548
 GC1945,賀茂カントリークラブ,739-2113 広島県東広島市高屋町高屋東４１０２,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=741101&order_key=gd_course_title_kana&order_method=asc,34.443489,132.8126983
@@ -979,7 +979,7 @@ GC1978,徳山カントリークラブ,745-0125 山口県周南市長穂１４１
 GC1979,徳山国際カントリー倶楽部,746-0081 山口県周南市四熊１１９２,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=753503&order_key=gd_course_title_kana&order_method=asc,34.1123488,131.7610068
 GC1980,プレジデントカントリー倶楽部山陽,757-0003 山口県山陽小野田市山野井２０３９−１９,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=755302&order_key=gd_course_title_kana&order_method=asc,34.07096200000001,131.1395845
 GC1981,柳井カントリー倶楽部,742-0111 山口県柳井市日積１２３７２−１,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=757101&order_key=gd_course_title_kana&order_method=asc,34.0119679,132.1397269
-GC1982,和木ゴルフ倶楽部,740-0062 山口県玖珂郡和木町瀬田 蜂ヶ峯４２４−３,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=759101&order_key=gd_course_title_kana&order_method=asc,,
+GC1982,和木ゴルフ倶楽部,740-0062 山口県玖珂郡和木町瀬田 蜂ヶ峯４２４−３,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=759101&order_key=gd_course_title_kana&order_method=asc,34.19179,132.2200631
 GC1983,阿南カントリークラブ,779-1401 徳島県阿南市橘町江ノ浦８８,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=810101&order_key=gd_course_title_kana&order_method=asc,33.8806455,134.6379681
 GC1984,御所カントリークラブ,771-1311 徳島県板野郡上板町引野安楽寺谷９０−１０,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=811501&order_key=gd_course_title_kana&order_method=asc,34.134163,134.380379
 GC1985,四国カントリークラブ,777-0005 徳島県美馬市穴吹町穴吹岡ノ上２００,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=812201&order_key=gd_course_title_kana&order_method=asc,34.0394401,134.1818145
@@ -993,13 +993,13 @@ GC1992,アルファ津田カントリークラブ,769-2323 香川県さぬき市
 GC1993,エリエールゴルフクラブ,769-0402 香川県三豊市財田町財田中４９８０,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=820401&order_key=gd_course_title_kana&order_method=asc,34.1012327,133.7545585
 GC1994,琴平カントリー倶楽部,767-0022 香川県三豊市高瀬町羽方２８６２,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=821501&order_key=gd_course_title_kana&order_method=asc,34.13598,133.736797
 GC1995,坂出カントリークラブ,762-0024 香川県坂出市府中町４６２８−１,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=822102&order_key=gd_course_title_kana&order_method=asc,34.2882308,133.9123687
-GC1996,讃岐カントリークラブ,769-2104 香川県さぬき市鴨部 5186番乙11,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=822101&order_key=gd_course_title_kana&order_method=asc,,
+GC1996,讃岐カントリークラブ,769-2104 香川県さぬき市鴨部 5186番乙11,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=822101&order_key=gd_course_title_kana&order_method=asc,34.3124058,134.2275923
 GC1997,志度カントリークラブ,769-2103 香川県さぬき市小田２３１,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=822201&order_key=gd_course_title_kana&order_method=asc,34.340854,134.249936
 GC1998,タカガワ新琴南ゴルフ倶楽部,766-0201 香川県仲多度郡まんのう町造田２２５９,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=821503&order_key=gd_course_title_kana&order_method=asc,34.1532932,133.9283761
 GC1999,高松カントリー倶楽部,762-0021 香川県坂出市西庄町1625―15,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=823101&order_key=gd_course_title_kana&order_method=asc,34.2958389,133.8861988
 GC2000,ロイヤル高松カントリークラブ,761-2102 香川県綾歌郡綾川町千疋１８４８,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=828501&order_key=gd_course_title_kana&order_method=asc,34.2120742,133.9985615
 GC2001,今治カントリー倶楽部,799-1607 愛媛県今治市朝倉上乙１１０３−１１,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=830201&order_key=gd_course_title_kana&order_method=asc,33.9667056,133.0299221
-GC2002,宇和島カントリー倶楽部,798-1102 愛媛県宇和島市三間町則１９７０,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=830301&order_key=gd_course_title_kana&order_method=asc,,
+GC2002,宇和島カントリー倶楽部,798-1102 愛媛県宇和島市三間町則１９７０,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=830301&order_key=gd_course_title_kana&order_method=asc,33.3122421,132.5779182
 GC2003,愛媛ゴルフ倶楽部,791-3341 愛媛県喜多郡内子町論田９５０,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=830401&order_key=gd_course_title_kana&order_method=asc,33.561921,132.648048
 GC2004,大洲ゴルフ倶楽部,795-0006 愛媛県大洲市野佐来８７９,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=830501&order_key=gd_course_title_kana&order_method=asc,33.476744,132.544912
 GC2005,久万カントリークラブ,791-1204 愛媛県上浮穴郡久万高原町東明神乙３３３−１,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=831301&order_key=gd_course_title_kana&order_method=asc,33.687385,132.8868306
@@ -1075,7 +1075,7 @@ GC2074,佐世保・平戸カントリークラブ,859-6121 長崎県佐世保市
 GC2075,島原カントリー倶楽部,859-1505 長崎県南島原市深江町戊３９８７,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=932201&order_key=gd_course_title_kana&order_method=asc,32.7333631,130.3257085
 GC2076,チサンカントリークラブ森山,854-0206 長崎県諫早市森山町唐比北１１１８,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=933201&order_key=gd_course_title_kana&order_method=asc,32.8075669,130.1200881
 GC2077,長崎国際ゴルフ倶楽部,854-0054 長崎県諫早市小ケ倉町５１,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=934102&order_key=gd_course_title_kana&order_method=asc,32.8093054,130.0448308
-GC2078,長崎パークカントリークラブ,851-3304 長崎県西海市西彼町上岳郷１２５５−１,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=934105&order_key=gd_course_title_kana&order_method=asc,,
+GC2078,長崎パークカントリークラブ,851-3304 長崎県西海市西彼町上岳郷１２５５−１,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=934105&order_key=gd_course_title_kana&order_method=asc,32.9778661,129.7760425
 GC2079,ハウステンボス カントリークラブ,851-3423 長崎県西海市西彼町八木原郷２８７９−２,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=935101&order_key=gd_course_title_kana&order_method=asc,33.0253758,129.7256801
 GC2080,阿蘇大津ゴルフクラブ,869-1214 熊本県菊池郡大津町瀬田７１１,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=940107&order_key=gd_course_title_kana&order_method=asc,32.8808414,130.9308338
 GC2081,あつまる阿蘇赤水ゴルフ倶楽部,869-2232 熊本県阿蘇市赤水,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=940101&order_key=gd_course_title_kana&order_method=asc,32.9057129,131.0242775
@@ -1109,7 +1109,7 @@ GC2108,別府の森ゴルフ倶楽部,874-0805 大分県別府市枝郷,https://
 GC2109,三重カントリークラブ,879-7102 大分県豊後大野市三重町菅生５５２,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=956201&order_key=gd_course_title_kana&order_method=asc,33.0104128,131.6253898
 GC2110,青島ゴルフ倶楽部,889-2164 宮崎県宮崎市折生迫 字大谷４１８０,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=960103&order_key=gd_course_title_kana&order_method=asc,31.7965755,131.4586639
 GC2111,北方ゴルフクラブ,882-0106 宮崎県延岡市北方町笠下寅１５６６,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=961201&order_key=gd_course_title_kana&order_method=asc,32.543543,131.54177
-GC2112,延岡ゴルフクラブ,882-0095 宮崎県延岡市浦城町１１６１,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=964501&order_key=gd_course_title_kana&order_method=asc,,
+GC2112,延岡ゴルフクラブ,882-0095 宮崎県延岡市浦城町１１６１,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=964501&order_key=gd_course_title_kana&order_method=asc,32.639533,131.7523676
 GC2113,フェニックスカントリークラブ,880-0122 宮崎県宮崎市塩路字浜山３０８３,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=963501&order_key=gd_course_title_kana&order_method=asc,31.9745821,131.4728207
 GC2114,美々津カントリークラブ,889-1121 宮崎県日向市東郷町山陰甲４１７−９４,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=966201&order_key=gd_course_title_kana&order_method=asc,32.3192033,131.5663566
 GC2115,宮崎カントリークラブ,880-0911 宮崎県宮崎市田吉４８５５−９０,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=966203&order_key=gd_course_title_kana&order_method=asc,31.863578,131.446152
@@ -1142,32 +1142,32 @@ GC2141,かねひで喜瀬カントリークラブ,905-0026 沖縄県名護市喜
 GC2142,ザ・サザンリンクスゴルフクラブ,901-0513 沖縄県島尻郡八重瀬町玻名城６９７,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=982101&order_key=gd_course_title_kana&order_method=asc,26.1141278,127.7394229
 GC2143,ジ・アッタテラス ゴルフリゾート,904-0402 沖縄県国頭郡恩納村安富祖１０７９,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=981101&order_key=gd_course_title_kana&order_method=asc,26.4997523,127.8960563
 GC2144,美らオーチャードゴルフ倶楽部,904-0402 沖縄県国頭郡恩納村安富祖１５７７,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=983101&order_key=gd_course_title_kana&order_method=asc,26.5100539,127.8927318
-GC2145,那覇ゴルフ倶楽部,901-0402 沖縄県島尻郡八重瀬町富盛２２７０,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=984101&order_key=gd_course_title_kana&order_method=asc,,
+GC2145,那覇ゴルフ倶楽部,901-0402 沖縄県島尻郡八重瀬町富盛２２７０,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=984101&order_key=gd_course_title_kana&order_method=asc,26.1250682,127.725578
 GC2146,パームヒルズゴルフリゾート,901-0323 沖縄県糸満市新垣７６２,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=985101&order_key=gd_course_title_kana&order_method=asc,26.1219521,127.7078585
 GC2147,PGMゴルフリゾート沖縄,904-0413 沖縄県国頭郡恩納村冨着１０４３,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=980503&order_key=gd_course_title_kana&order_method=asc,26.4550111,127.8202105
 GC2148,琉球ゴルフ倶楽部,901-0608 沖縄県南城市玉城親慶原１,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=988201&order_key=gd_course_title_kana&order_method=asc,26.1480503,127.7799272
-GC2149,太平洋クラブ御殿場コース,412-0048 静岡県御殿場市板妻９４１−１,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=999002&order_key=gd_course_title_kana&order_method=asc,,
-GC2150,太平洋クラブ六甲コース,673-1244 兵庫県三木市吉川町水上１５８２−１,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=999002&order_key=gd_course_title_kana&order_method=asc,,
-GC2151,太平洋クラブ江南コース,360-0107 埼玉県熊谷市千代９８５ 太平洋クラブ江南コース,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=999002&order_key=gd_course_title_kana&order_method=asc,,
-GC2152,太平洋クラブ八千代コース,276-0015 千葉県八千代市米本２８３４,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=999002&order_key=gd_course_title_kana&order_method=asc,,
-GC2153,太平洋クラブ成田コース,286-0125 千葉県成田市川栗２４０,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=999002&order_key=gd_course_title_kana&order_method=asc,,
-GC2154,太平洋クラブ御殿場WEST,412-0008 静岡県御殿場市印野１０４４−１,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=999002&order_key=gd_course_title_kana&order_method=asc,,
-GC2155,太平洋クラブ市原コース,290-0513 千葉県市原市奥野１５１,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=999002&order_key=gd_course_title_kana&order_method=asc,,
-GC2156,太平洋クラブ相模コース,259-1334 神奈川県秦野市柳川大峯７７１−１,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=999002&order_key=gd_course_title_kana&order_method=asc,,
-GC2157,太平洋クラブ佐野ヒルクレストコース,327-0305 栃木県佐野市船越町２８５４,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=999002&order_key=gd_course_title_kana&order_method=asc,,
-GC2158,太平洋クラブ益子PGAコース,321-4106 栃木県芳賀郡益子町七井３３０２−１,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=999002&order_key=gd_course_title_kana&order_method=asc,,
-GC2159,太平洋クラブ美野里コース,319-0104 茨城県小美玉市三箇９５２,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=999002&order_key=gd_course_title_kana&order_method=asc,,
-GC2160,太平洋クラブ宝塚コース,669-1205 兵庫県宝塚市長谷 字花折７−２,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=999002&order_key=gd_course_title_kana&order_method=asc,,
-GC2161,太平洋クラブ大洗シャーウッドコース,311-1313 茨城県東茨城郡大洗町成田町３１３,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=999002&order_key=gd_course_title_kana&order_method=asc,,
-GC2162,太平洋クラブ高崎コース,379-0108 群馬県安中市上後閑４７７,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=999002&order_key=gd_course_title_kana&order_method=asc,,
-GC2163,太平洋クラブ有馬コース,673-1242 兵庫県三木市吉川町奥谷１１４−８,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=999002&order_key=gd_course_title_kana&order_method=asc,,
-GC2164,太平洋クラブ札幌コース,061-3441 北海道石狩市厚田聚富 シップ242,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=999002&order_key=gd_course_title_kana&order_method=asc,,
-GC2165,太平洋クラブ軽井沢リゾート,377-1412 群馬県吾妻郡長野原町北軽井沢２０３２−２７９,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=999002&order_key=gd_course_title_kana&order_method=asc,,
-GC2166,太平洋クラブ白河リゾート,962-0622 福島県岩瀬郡天栄村田良尾芝草１ 村田,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=999002&order_key=gd_course_title_kana&order_method=asc,,
-GC2167,太平洋クラブロイヤルコース,311-2117 茨城県鉾田市大蔵２００,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=999002&order_key=gd_course_title_kana&order_method=asc,,
-GC2168,平成倶楽部,369-1224 埼玉県大里郡寄居町鉢形３２１２,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=999008&order_key=gd_course_title_kana&order_method=asc,,
-GC2169,レイク相模カントリークラブ,409-0111 山梨県上野原市棡原５０００,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=999008&order_key=gd_course_title_kana&order_method=asc,,
-GC2170,山田ゴルフ倶楽部,289-1517 千葉県山武市松尾町下大蔵７９０,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=999008&order_key=gd_course_title_kana&order_method=asc,,
-GC2171,南茂原カントリークラブ,297-0135 千葉県長生郡長南町地引７４２,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=999008&order_key=gd_course_title_kana&order_method=asc,,
-GC2172,万木城カントリークラブ,298-0135 千葉県いすみ市作田２,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=999008&order_key=gd_course_title_kana&order_method=asc,,
-GC2173,日立高鈴ゴルフ倶楽部,311-0324 茨城県常陸太田市茅根町１７３０,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=999008&order_key=gd_course_title_kana&order_method=asc,,
+GC2149,太平洋クラブ御殿場コース,412-0048 静岡県御殿場市板妻９４１−１,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=999002&order_key=gd_course_title_kana&order_method=asc,35.2844231,138.8761779
+GC2150,太平洋クラブ六甲コース,673-1244 兵庫県三木市吉川町水上１５８２−１,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=999002&order_key=gd_course_title_kana&order_method=asc,34.8417207,135.1293859
+GC2151,太平洋クラブ江南コース,360-0107 埼玉県熊谷市千代９８５ 太平洋クラブ江南コース,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=999002&order_key=gd_course_title_kana&order_method=asc,36.12278,139.3135388
+GC2152,太平洋クラブ八千代コース,276-0015 千葉県八千代市米本２８３４,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=999002&order_key=gd_course_title_kana&order_method=asc,35.7498086,140.1278425
+GC2153,太平洋クラブ成田コース,286-0125 千葉県成田市川栗２４０,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=999002&order_key=gd_course_title_kana&order_method=asc,35.7676536,140.3393067
+GC2154,太平洋クラブ御殿場WEST,412-0008 静岡県御殿場市印野１０４４−１,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=999002&order_key=gd_course_title_kana&order_method=asc,35.2846611,138.8557497
+GC2155,太平洋クラブ市原コース,290-0513 千葉県市原市奥野１５１,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=999002&order_key=gd_course_title_kana&order_method=asc,35.39982670000001,140.1834097
+GC2156,太平洋クラブ相模コース,259-1334 神奈川県秦野市柳川大峯７７１−１,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=999002&order_key=gd_course_title_kana&order_method=asc,35.3937669,139.1518367
+GC2157,太平洋クラブ佐野ヒルクレストコース,327-0305 栃木県佐野市船越町２８５４,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=999002&order_key=gd_course_title_kana&order_method=asc,36.4256973,139.5705871
+GC2158,太平洋クラブ益子PGAコース,321-4106 栃木県芳賀郡益子町七井３３０２−１,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=999002&order_key=gd_course_title_kana&order_method=asc,36.5148645,140.1046914
+GC2159,太平洋クラブ美野里コース,319-0104 茨城県小美玉市三箇９５２,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=999002&order_key=gd_course_title_kana&order_method=asc,36.2073751,140.3368454
+GC2160,太平洋クラブ宝塚コース,669-1205 兵庫県宝塚市長谷 字花折７−２,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=999002&order_key=gd_course_title_kana&order_method=asc,34.9060968,135.3325277
+GC2161,太平洋クラブ大洗シャーウッドコース,311-1313 茨城県東茨城郡大洗町成田町３１３,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=999002&order_key=gd_course_title_kana&order_method=asc,36.269154,140.5391994
+GC2162,太平洋クラブ高崎コース,379-0108 群馬県安中市上後閑４７７,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=999002&order_key=gd_course_title_kana&order_method=asc,36.3475456,138.8111572
+GC2163,太平洋クラブ有馬コース,673-1242 兵庫県三木市吉川町奥谷１１４−８,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=999002&order_key=gd_course_title_kana&order_method=asc,34.853431,135.129308
+GC2164,太平洋クラブ札幌コース,061-3441 北海道石狩市厚田聚富 シップ242,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=999002&order_key=gd_course_title_kana&order_method=asc,43.2808918,141.4485538
+GC2165,太平洋クラブ軽井沢リゾート,377-1412 群馬県吾妻郡長野原町北軽井沢２０３２−２７９,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=999002&order_key=gd_course_title_kana&order_method=asc,36.425664,138.605123
+GC2166,太平洋クラブ白河リゾート,962-0622 福島県岩瀬郡天栄村田良尾芝草１ 村田,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=999002&order_key=gd_course_title_kana&order_method=asc,37.2493166,140.0383213
+GC2167,太平洋クラブロイヤルコース,311-2117 茨城県鉾田市大蔵２００,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=999002&order_key=gd_course_title_kana&order_method=asc,36.09802,140.576047
+GC2168,平成倶楽部,369-1224 埼玉県大里郡寄居町鉢形３２１２,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=999008&order_key=gd_course_title_kana&order_method=asc,36.1001702,139.2019137
+GC2169,レイク相模カントリークラブ,409-0111 山梨県上野原市棡原５０００,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=999008&order_key=gd_course_title_kana&order_method=asc,35.6652875,139.1032761
+GC2170,山田ゴルフ倶楽部,289-1517 千葉県山武市松尾町下大蔵７９０,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=999008&order_key=gd_course_title_kana&order_method=asc,35.6302509,140.4207743
+GC2171,南茂原カントリークラブ,297-0135 千葉県長生郡長南町地引７４２,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=999008&order_key=gd_course_title_kana&order_method=asc,35.3615,140.2745528
+GC2172,万木城カントリークラブ,298-0135 千葉県いすみ市作田２,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=999008&order_key=gd_course_title_kana&order_method=asc,35.3090913,140.2757299
+GC2173,日立高鈴ゴルフ倶楽部,311-0324 茨城県常陸太田市茅根町１７３０,https://golfdigest-play.jp/membership_chart?page=1&gd_course_code=999008&order_key=gd_course_title_kana&order_method=asc,36.588306,140.578074
