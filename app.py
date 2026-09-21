@@ -3,12 +3,12 @@ import googlemaps
 import pandas as pd
 import urllib.parse
 import math
+import os
 from datetime import datetime
 
 # ---------------------------------------------------------
-# 1. APIキーの設定
+# 1. APIキーの設定 (Streamlit Secrets / 環境変数)
 # ---------------------------------------------------------
-import os
 API_KEY = st.secrets.get("GOOGLE_MAPS_API_KEY", os.environ.get("GOOGLE_MAPS_API_KEY"))
 gmaps = googlemaps.Client(key=API_KEY)
 
@@ -22,7 +22,7 @@ golf_df = load_golf_data()
 # 直線距離計算用の関数 (ヒュベニの公式)
 def calculate_direct_distance(lat1, lon1, lat2, lon2):
     if pd.isnull(lat1) or pd.isnull(lon1) or pd.isnull(lat2) or pd.isnull(lon2):
-        return 9999  # 緯度経度がない場合は後回し
+        return 9999
     
     rad_lat1 = math.radians(lat1)
     rad_lon1 = math.radians(lon1)
@@ -34,22 +34,26 @@ def calculate_direct_distance(lat1, lon1, lat2, lon2):
     
     a = math.sin(dlat/2)**2 + math.cos(rad_lat1) * math.cos(rad_lat2) * math.sin(dlon/2)**2
     c = 2 * math.atan2(math.sqrt(a), math.sqrt(1-a))
-    return 6371 * c # 地球の半径 km
+    return 6371 * c
 
 # ---------------------------------------------------------
-# 2. 画面UIの作成
+# UI設定
 # ---------------------------------------------------------
 st.title("⛳ ゴルフ場案内チャット")
 
-st.subheader("検索条件を入力してください")
+# ---------------------------------------------------------
+# 機能1: 時間指定で広域検索
+# ---------------------------------------------------------
+st.subheader("条件で検索（移動時間から探す）")
 user_address = st.text_input(
     "ご自宅の住所", 
-    placeholder="例: 東京都港区新橋 / 大阪府大阪市北区梅田"
+    placeholder="例: 東京都港区新橋 / 神奈川県鎌倉市山崎",
+    key="area_address"
 )
 time_option = st.selectbox(
     "許容できる移動時間",
     options=["車で30分以内", "車で1時間以内", "車で1時間半以内", "車で2時間以内"],
-    index=1
+    index=2
 )
 
 time_limit_mapping = {
@@ -60,16 +64,12 @@ time_limit_mapping = {
 }
 max_minutes = time_limit_mapping[time_option]
 
-# ---------------------------------------------------------
-# 3. 検索処理 (200件判定版)
-# ---------------------------------------------------------
-if st.button("ゴルフ場を探す"):
+if st.button("条件で探す", key="btn_area"):
     if not user_address:
         st.warning("住所を入力してください。")
     else:
         with st.spinner("近隣のゴルフ場を精査中..."):
             try:
-                # 1. 自宅住所の緯度経度を取得
                 geocode_result = gmaps.geocode(user_address, language='ja')
                 if not geocode_result:
                     st.error("入力された住所の場所を特定できませんでした。")
@@ -78,7 +78,6 @@ if st.button("ゴルフ場を探す"):
                 user_lat = geocode_result[0]['geometry']['location']['lat']
                 user_lng = geocode_result[0]['geometry']['location']['lng']
 
-                # 2. 全ゴルフ場との直線距離を一括計算（Python内部処理で一瞬）
                 temp_courses = []
                 for _, row in golf_df.iterrows():
                     dist = calculate_direct_distance(user_lat, user_lng, row['lat'], row['lng'])
@@ -87,10 +86,8 @@ if st.button("ゴルフ場を探す"):
                         "direct_dist": dist
                     })
 
-                # ★ 3. 直線距離が近い上位200件へ枠を大幅拡大
                 temp_courses = sorted(temp_courses, key=lambda x: x['direct_dist'])[:200]
 
-                # 4. 200件に対して Google API で実際の車移動時間を計算
                 results = []
                 batch_size = 10
                 
@@ -134,7 +131,6 @@ if st.button("ゴルフ場を探す"):
                                     "distance": distance_km
                                 })
 
-                # 移動時間が短い順にソート
                 results = sorted(results, key=lambda x: x['duration'])
 
                 st.success(f"「{user_address}」から **{time_option}** で行けるゴルフ場が {len(results)} 件見つかりました！")
@@ -142,12 +138,92 @@ if st.button("ゴルフ場を探す"):
 
                 if results:
                     for item in results:
-                        st.markdown(f"### ⛳ [{item['name']}]({item['url']})")
+                        st.markdown(f"<h3 style='margin-bottom:0;'>⛳ <a href='{item['url']}' target='_blank' style='text-decoration:none; color:#1E88E5;'>{item['name']}</a></h3>", unsafe_allow_html=True)
                         st.write(f"🚗 **所要時間**: 約 {item['duration']} 分 （距離: {item['distance']}）")
                         st.markdown(f"📍 **住所**: [{item['address']}]({item['map_url']})")
                         st.divider()
                 else:
                     st.info("指定された時間内で行けるゴルフ場が見つかりませんでした。時間を延ばして試してみてください。")
+
+            except Exception as e:
+                st.error(f"エラーが発生しました: {e}")
+
+st.divider()
+
+# ---------------------------------------------------------
+# 機能2: 特定のゴルフ場を指定して距離・時間をピンポイント検索
+# ---------------------------------------------------------
+st.subheader("指定のゴルフ場をピンポイント検索")
+
+user_address_single = st.text_input(
+    "ご自宅の住所", 
+    placeholder="例: 東京都港区新橋 / 神奈川県鎌倉市山崎",
+    key="single_address"
+)
+
+# ゴルフ場名一覧を作成（ドロップダウンまたは直接入力可能）
+course_list = ["（選択してください）"] + sorted(golf_df['golf_name'].dropna().unique().tolist())
+selected_course = st.selectbox("ゴルフ場名を選択", options=course_list)
+
+manual_course_name = st.text_input(
+    "またはゴルフ場名を直接入力", 
+    placeholder="例: よみうりゴルフ倶楽部",
+    key="manual_course"
+)
+
+if st.button("このゴルフ場へのルート・時間を調べる", key="btn_single"):
+    target_course = manual_course_name.strip() if manual_course_name.strip() else (selected_course if selected_course != "（選択してください）" else "")
+    
+    if not user_address_single:
+        st.warning("ご自宅の住所を入力してください。")
+    elif not target_course:
+        st.warning("ゴルフ場名を選択または入力してください。")
+    else:
+        with st.spinner("指定されたゴルフ場へのルートを計算中..."):
+            try:
+                # 該当するゴルフ場データをCSVから検索
+                match_row = golf_df[golf_df['golf_name'] == target_course]
+                
+                if not match_row.empty:
+                    row = match_row.iloc[0]
+                    c_name = row['golf_name']
+                    c_address = row['address']
+                    c_url = row['url']
+                    if pd.notnull(row['lat']) and pd.notnull(row['lng']):
+                        destination = (row['lat'], row['lng'])
+                    else:
+                        destination = f"{c_name} {c_address}"
+                else:
+                    c_name = target_course
+                    c_address = "住所情報"
+                    c_url = f"https://www.google.com/search?q={urllib.parse.quote(c_name)}"
+                    destination = c_name
+
+                matrix_result = gmaps.distance_matrix(
+                    origins=[user_address_single],
+                    destinations=[destination],
+                    mode="driving",
+                    departure_time=datetime.now(),
+                    language='ja'
+                )
+
+                element = matrix_result['rows'][0]['elements'][0]
+
+                if element.get('status') == 'OK':
+                    duration_min = round(element['duration']['value'] / 60)
+                    distance_km = element['distance']['text']
+
+                    map_query = urllib.parse.quote(f"{c_name} {c_address}")
+                    map_url = f"https://www.google.com/maps/search/?api=1&query={map_query}"
+
+                    st.success(f"「{user_address_single}」から「{c_name}」までの計算結果です！")
+                    st.divider()
+                    st.markdown(f"<h3 style='margin-bottom:0;'>⛳ <a href='{c_url}' target='_blank' style='text-decoration:none; color:#1E88E5;'>{c_name}</a></h3>", unsafe_allow_html=True)
+                    st.write(f"🚗 **所要時間**: 約 {duration_min} 分 （距離: {distance_km}）")
+                    st.markdown(f"📍 **住所**: [{c_address}]({map_url})")
+                    st.divider()
+                else:
+                    st.error("ルートの計算に失敗しました。住所やゴルフ場名をご確認ください。")
 
             except Exception as e:
                 st.error(f"エラーが発生しました: {e}")
