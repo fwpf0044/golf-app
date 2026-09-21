@@ -171,7 +171,7 @@ manual_course_name = st.text_input(
     key="manual_course"
 )
 
-if st.button("このゴルフ場へのルート・時間を調べる", key="btn_single"):
+if st.button("このゴルフ場まで時間・距離を調べる", key="btn_single"):
     target_course = manual_course_name.strip() if manual_course_name.strip() else (selected_course if selected_course != "（選択してください）" else "")
     
     if not user_address_single:
