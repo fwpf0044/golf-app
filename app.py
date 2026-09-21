@@ -51,7 +51,7 @@ user_address = st.text_input(
     key="area_address"
 )
 time_option = st.selectbox(
-    "車での移動時間",
+    "車での移動時間を選択",
     options=["車で30分以内", "車で1時間以内", "車で1時間半以内", "車で2時間以内"],
     index=2
 )
