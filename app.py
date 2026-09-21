@@ -40,7 +40,7 @@ def calculate_direct_distance(lat1, lon1, lat2, lon2):
 # UI設定
 # ---------------------------------------------------------
 st.title("⛳ 所要時間でゴルフ場検索(β版)")
-st.caption("※現在の道路状況や渋滞情報を考慮して、主なゴルフ場までの時間を検索できます。")
+st.caption("※現在の道路状況や渋滞情報を考慮して、主なゴルフ場までの時間を検索できます。またゴルフ場の住所をクリックするとルートも調べられます。")
 
 # ---------------------------------------------------------
 # 機能1: 時間指定で広域検索
@@ -65,7 +65,7 @@ time_limit_mapping = {
 }
 max_minutes = time_limit_mapping[time_option]
 
-if st.button("この条件で探す", key="btn_area"):
+if st.button("この条件で調べる", key="btn_area"):
     if not user_address:
         st.warning("住所を入力してください。")
     else:
@@ -120,14 +120,15 @@ if st.button("この条件で探す", key="btn_area"):
                             course = batch[idx]['data']
 
                             if duration_min <= max_minutes:
-                                map_query = urllib.parse.quote(f"{course['golf_name']} {course['address']}")
-                                map_url = f"https://www.google.com/maps/search/?api=1&query={map_query}"
-                                
+                                # ★自宅住所(origin) から ゴルフ場(destination) へのルート案内URLを作成
+                                origin_param = urllib.parse.quote(user_address)
+                                dest_param = urllib.parse.quote(f"{course['golf_name']} {course['address']}")
+                                map_url = f"https://www.google.com/maps/dir/?api=1&origin={origin_param}&destination={dest_param}&travelmode=driving"
 
                                 results.append({
                                     "name": course['golf_name'],
                                     "address": course['address'],
-                                    "url": course['url'], # ★CSVのURLをそのまま使用
+                                    "url": course['url'],
                                     "map_url": map_url,
                                     "duration": duration_min,
                                     "distance": distance_km
@@ -140,7 +141,6 @@ if st.button("この条件で探す", key="btn_area"):
 
                 if results:
                     for item in results:
-                        # ★ゴルフ場名のリンク先も、会員権リンク先も、同じ item['url'] に設定
                         title_html = f"""
                             <h3 style='margin-bottom:0; display:flex; align-items:center;'>
                                 ⛳&nbsp;<a href='{item['url']}' target='_blank' style='text-decoration:none; color:#1E88E5; margin-right: 12px;'>{item['name']}</a>
@@ -176,7 +176,7 @@ user_address_single = st.text_input(
 course_list = ["（入力して選択）"] + sorted(golf_df['golf_name'].dropna().unique().tolist())
 selected_course = st.selectbox("ゴルフ場名を選択", options=course_list)
 
-if st.button("このゴルフ場までの時間を調べる", key="btn_single"):
+if st.button("このゴルフ場まで時間を調べる", key="btn_single"):
     if not user_address_single:
         st.warning("ご自宅の住所を入力してください。")
     elif selected_course == "（選択してください）":
@@ -191,7 +191,7 @@ if st.button("このゴルフ場までの時間を調べる", key="btn_single"):
                     row = match_row.iloc[0]
                     c_name = row['golf_name']
                     c_address = row['address']
-                    c_url = row['url'] # ★CSVのURLをそのまま使用
+                    c_url = row['url']
                     if pd.notnull(row['lat']) and pd.notnull(row['lng']):
                         destination = (row['lat'], row['lng'])
                     else:
@@ -216,14 +216,14 @@ if st.button("このゴルフ場までの時間を調べる", key="btn_single"):
                     duration_min = round(element['duration']['value'] / 60)
                     distance_km = element['distance']['text']
 
-                    map_query = urllib.parse.quote(f"{c_name} {c_address}")
-                    map_url = f"https://www.google.com/maps/search/?api=1&query={map_query}"
-                    
+                    # ★自宅住所(origin) から ゴルフ場(destination) へのルート案内URLを作成
+                    origin_param_s = urllib.parse.quote(user_address_single)
+                    dest_param_s = urllib.parse.quote(f"{c_name} {c_address}")
+                    map_url = f"https://www.google.com/maps/dir/?api=1&origin={origin_param_s}&destination={dest_param_s}&travelmode=driving"
 
                     st.success(f"「{user_address_single}」から「{c_name}」までの計算結果です！")
                     st.divider()
                     
-                    # ★機能2でもゴルフ場名のリンク先と、会員権リンク先を同じ c_url に設定
                     title_html_single = f"""
                         <h3 style='margin-bottom:0; display:flex; align-items:center;'>
                             ⛳&nbsp;<a href='{c_url}' target='_blank' style='text-decoration:none; color:#1E88E5; margin-right: 12px;'>{c_name}</a>
