@@ -39,13 +39,13 @@ def calculate_direct_distance(lat1, lon1, lat2, lon2):
 # ---------------------------------------------------------
 # UI設定
 # ---------------------------------------------------------
-st.title("⛳ 所要時間でゴルフ場検索(β版)")
-st.caption("◆現在の道路状況や渋滞情報を考慮して、主なゴルフ場までの時間を検索します◆")
+st.title("⛳ ゴルフ場検索チャット(β版)")
+st.caption("※現在の道路状況や渋滞情報を考慮してゴルフ場までの時間を検索できます。")
 
 # ---------------------------------------------------------
 # 機能1: 時間指定で広域検索
 # ---------------------------------------------------------
-st.subheader("車の移動時間でゴルフ場を探す")
+st.subheader("車の所要時間でゴルフ場を探す")
 user_address = st.text_input(
     "ご自宅の住所", 
     placeholder="例: 東京都港区新橋 / 大阪府大阪市北区梅田",
@@ -122,11 +122,12 @@ if st.button("条件で探す", key="btn_area"):
                             if duration_min <= max_minutes:
                                 map_query = urllib.parse.quote(f"{course['golf_name']} {course['address']}")
                                 map_url = f"https://www.google.com/maps/search/?api=1&query={map_query}"
+                                
 
                                 results.append({
                                     "name": course['golf_name'],
                                     "address": course['address'],
-                                    "url": course['url'],
+                                    "url": course['url'], # ★CSVのURLをそのまま使用
                                     "map_url": map_url,
                                     "duration": duration_min,
                                     "distance": distance_km
@@ -139,7 +140,16 @@ if st.button("条件で探す", key="btn_area"):
 
                 if results:
                     for item in results:
-                        st.markdown(f"<h3 style='margin-bottom:0;'>⛳ <a href='{item['url']}' target='_blank' style='text-decoration:none; color:#1E88E5;'>{item['name']}</a></h3>", unsafe_allow_html=True)
+                        # ★ゴルフ場名のリンク先も、会員権リンク先も、同じ item['url'] に設定
+                        title_html = f"""
+                            <h3 style='margin-bottom:0; display:flex; align-items:center;'>
+                                ⛳&nbsp;<a href='{item['url']}' target='_blank' style='text-decoration:none; color:#1E88E5; margin-right: 12px;'>{item['name']}</a>
+                                <a href='{item['url']}' target='_blank' style='font-size: 0.7em; font-weight: normal; color: #757575; text-decoration: none;'>
+                                    ◆会員権価格を見る
+                                </a>
+                            </h3>
+                        """
+                        st.markdown(title_html, unsafe_allow_html=True)
                         st.write(f"🚗 **所要時間**: 約 {item['duration']} 分 （距離: {item['distance']}）")
                         st.markdown(f"📍 **住所**: [{item['address']}]({item['map_url']})")
                         st.divider()
@@ -163,7 +173,7 @@ user_address_single = st.text_input(
 )
 
 # ゴルフ場名一覧を作成（ドロップダウンから選択）
-course_list = ["（入力して選択）"] + sorted(golf_df['golf_name'].dropna().unique().tolist())
+course_list = ["（選択してください）"] + sorted(golf_df['golf_name'].dropna().unique().tolist())
 selected_course = st.selectbox("ゴルフ場名を選択", options=course_list)
 
 if st.button("このゴルフ場まで時間・距離を調べる", key="btn_single"):
@@ -181,7 +191,7 @@ if st.button("このゴルフ場まで時間・距離を調べる", key="btn_sin
                     row = match_row.iloc[0]
                     c_name = row['golf_name']
                     c_address = row['address']
-                    c_url = row['url']
+                    c_url = row['url'] # ★CSVのURLをそのまま使用
                     if pd.notnull(row['lat']) and pd.notnull(row['lng']):
                         destination = (row['lat'], row['lng'])
                     else:
@@ -208,10 +218,21 @@ if st.button("このゴルフ場まで時間・距離を調べる", key="btn_sin
 
                     map_query = urllib.parse.quote(f"{c_name} {c_address}")
                     map_url = f"https://www.google.com/maps/search/?api=1&query={map_query}"
+                    
 
                     st.success(f"「{user_address_single}」から「{c_name}」までの計算結果です！")
                     st.divider()
-                    st.markdown(f"<h3 style='margin-bottom:0;'>⛳ <a href='{c_url}' target='_blank' style='text-decoration:none; color:#1E88E5;'>{c_name}</a></h3>", unsafe_allow_html=True)
+                    
+                    # ★機能2でもゴルフ場名のリンク先と、会員権リンク先を同じ c_url に設定
+                    title_html_single = f"""
+                        <h3 style='margin-bottom:0; display:flex; align-items:center;'>
+                            ⛳&nbsp;<a href='{c_url}' target='_blank' style='text-decoration:none; color:#1E88E5; margin-right: 12px;'>{c_name}</a>
+                            <a href='{c_url}' target='_blank' style='font-size: 0.7em; font-weight: normal; color: #757575; text-decoration: none;'>
+                                ◆会員権価格を見る
+                            </a>
+                        </h3>
+                    """
+                    st.markdown(title_html_single, unsafe_allow_html=True)
                     st.write(f"🚗 **所要時間**: 約 {duration_min} 分 （距離: {distance_km}）")
                     st.markdown(f"📍 **住所**: [{c_address}]({map_url})")
                     st.divider()
