@@ -161,28 +161,20 @@ user_address_single = st.text_input(
     key="single_address"
 )
 
-# ゴルフ場名一覧を作成（ドロップダウンまたは直接入力可能）
-course_list = ["（入力して候補を探す）"] + sorted(golf_df['golf_name'].dropna().unique().tolist())
+# ゴルフ場名一覧を作成（ドロップダウンから選択）
+course_list = ["（選択してください）"] + sorted(golf_df['golf_name'].dropna().unique().tolist())
 selected_course = st.selectbox("ゴルフ場名を選択", options=course_list)
 
-manual_course_name = st.text_input(
-    "またはゴルフ場名を直接入力", 
-    placeholder="例: よみうりゴルフ倶楽部",
-    key="manual_course"
-)
-
 if st.button("このゴルフ場まで時間・距離を調べる", key="btn_single"):
-    target_course = manual_course_name.strip() if manual_course_name.strip() else (selected_course if selected_course != "（選択してください）" else "")
-    
     if not user_address_single:
         st.warning("ご自宅の住所を入力してください。")
-    elif not target_course:
-        st.warning("ゴルフ場名を選択または入力してください。")
+    elif selected_course == "（選択してください）":
+        st.warning("ゴルフ場名を選択してください。")
     else:
         with st.spinner("指定されたゴルフ場へのルートを計算中..."):
             try:
                 # 該当するゴルフ場データをCSVから検索
-                match_row = golf_df[golf_df['golf_name'] == target_course]
+                match_row = golf_df[golf_df['golf_name'] == selected_course]
                 
                 if not match_row.empty:
                     row = match_row.iloc[0]
@@ -194,7 +186,7 @@ if st.button("このゴルフ場まで時間・距離を調べる", key="btn_sin
                     else:
                         destination = f"{c_name} {c_address}"
                 else:
-                    c_name = target_course
+                    c_name = selected_course
                     c_address = "住所情報"
                     c_url = f"https://www.google.com/search?q={urllib.parse.quote(c_name)}"
                     destination = c_name
