@@ -4,7 +4,6 @@ import pandas as pd
 import urllib.parse
 import math
 import os
-from datetime import datetime
 
 # ---------------------------------------------------------
 # 1. APIキーの設定 (Streamlit Secrets / 環境変数)
@@ -39,31 +38,33 @@ def calculate_direct_distance(lat1, lon1, lat2, lon2):
 # ---------------------------------------------------------
 # UI設定
 # ---------------------------------------------------------
-st.title("⛳ 所要時間でゴルフ場検索(β版)")
-st.caption("■車の移動時間から主なゴルフ場を検索できます。ゴルフ場の住所をクリックするとルートも分かります。")
+st.title("⛳ 直線距離でゴルフ場検索(超節約版)")
+st.caption("■入力地点から直線距離が近い順にゴルフ場を表示します。住所をクリックするとルート案内画面が開きます。")
 
 # ---------------------------------------------------------
-# 機能1: 時間指定で広域検索
+# 機能1: 直線距離での広域検索（APIコスト約0.75円/回）
 # ---------------------------------------------------------
-st.subheader("車の移動時間でゴルフ場を調べる")
+st.subheader("直線距離でゴルフ場を調べる")
 user_address = st.text_input(
     "出発地点の住所(ご自宅など)", 
     placeholder="例: 東京都港区新橋 / 大阪府大阪市北区梅田",
     key="area_address"
 )
-time_option = st.selectbox(
-    "車での移動時間を選択",
-    options=["車で30分以内", "車で1時間以内", "車で1時間半以内", "車で2時間以内"],
+
+# 距離指定の選択肢
+distance_option = st.selectbox(
+    "検索範囲（直線距離）を選択",
+    options=["直線で 20km 以内", "直線で 30km 以内", "直線で 50km 以内", "直線で 80km 以内"],
     index=2
 )
 
-time_limit_mapping = {
-    "車で30分以内": 30,
-    "車で1時間以内": 60,
-    "車で1時間半以内": 90,
-    "車で2時間以内": 120,
+dist_limit_mapping = {
+    "直線で 20km 以内": 20,
+    "直線で 30km 以内": 30,
+    "直線で 50km 以内": 50,
+    "直線で 80km 以内": 80,
 }
-max_minutes = time_limit_mapping[time_option]
+max_km = dist_limit_mapping[distance_option]
 
 if st.button("この条件で調べる", key="btn_area"):
     if not user_address:
@@ -71,6 +72,7 @@ if st.button("この条件で調べる", key="btn_area"):
     else:
         with st.spinner("近隣のゴルフ場を精査中..."):
             try:
+                # 1回だけGeocoding APIを呼び出して入力住所の座標を取得
                 geocode_result = gmaps.geocode(user_address, language='ja')
                 if not geocode_result:
                     st.error("入力された住所の場所を特定できませんでした。")
@@ -79,64 +81,28 @@ if st.button("この条件で調べる", key="btn_area"):
                 user_lat = geocode_result[0]['geometry']['location']['lat']
                 user_lng = geocode_result[0]['geometry']['location']['lng']
 
-                temp_courses = []
+                results = []
+                # 全ゴルフ場データに対してPython内部で直線距離を計算
                 for _, row in golf_df.iterrows():
                     dist = calculate_direct_distance(user_lat, user_lng, row['lat'], row['lng'])
-                    temp_courses.append({
-                        "data": row,
-                        "direct_dist": dist
-                    })
-
-                temp_courses = sorted(temp_courses, key=lambda x: x['direct_dist'])[:200]
-
-                results = []
-                batch_size = 10
-                
-                for i in range(0, len(temp_courses), batch_size):
-                    batch = temp_courses[i:i + batch_size]
-                    destinations = []
                     
-                    for item in batch:
-                        row = item['data']
-                        if pd.notnull(row['lat']) and pd.notnull(row['lng']):
-                            destinations.append((row['lat'], row['lng']))
-                        else:
-                            destinations.append(f"{row['golf_name']} {row['address']}")
+                    if dist <= max_km:
+                        origin_param = urllib.parse.quote(user_address)
+                        dest_param = urllib.parse.quote(f"{row['golf_name']} {row['address']}")
+                        map_url = f"https://www.google.com/maps/dir/?api=1&origin={origin_param}&destination={dest_param}&travelmode=driving"
 
-                    matrix_result = gmaps.distance_matrix(
-                        origins=[(user_lat, user_lng)],
-                        destinations=destinations,
-                        mode="driving",
-                        departure_time=datetime.now(),
-                        language='ja'
-                    )
+                        results.append({
+                            "name": row['golf_name'],
+                            "address": row['address'],
+                            "url": row['url'],
+                            "map_url": map_url,
+                            "distance_km": round(dist, 1)
+                        })
 
-                    rows = matrix_result['rows'][0]['elements']
+                # 直線距離が近い順にソート
+                results = sorted(results, key=lambda x: x['distance_km'])
 
-                    for idx, element in enumerate(rows):
-                        if element.get('status') == 'OK':
-                            duration_min = round(element['duration']['value'] / 60)
-                            distance_km = element['distance']['text']
-                            course = batch[idx]['data']
-
-                            if duration_min <= max_minutes:
-                                # ★自宅住所(origin) から ゴルフ場(destination) へのルート案内URLを作成
-                                origin_param = urllib.parse.quote(user_address)
-                                dest_param = urllib.parse.quote(f"{course['golf_name']} {course['address']}")
-                                map_url = f"https://www.google.com/maps/dir/?api=1&origin={origin_param}&destination={dest_param}&travelmode=driving"
-
-                                results.append({
-                                    "name": course['golf_name'],
-                                    "address": course['address'],
-                                    "url": course['url'],
-                                    "map_url": map_url,
-                                    "duration": duration_min,
-                                    "distance": distance_km
-                                })
-
-                results = sorted(results, key=lambda x: x['duration'])
-
-                st.success(f"「{user_address}」から **{time_option}** で行けるゴルフ場が {len(results)} 件見つかりました！")
+                st.success(f"「{user_address}」から **{distance_option}** にあるゴルフ場が {len(results)} 件見つかりました！")
                 st.divider()
 
                 if results:
@@ -150,11 +116,11 @@ if st.button("この条件で調べる", key="btn_area"):
                             </h3>
                         """
                         st.markdown(title_html, unsafe_allow_html=True)
-                        st.write(f"🚗 **所要時間**: 約 {item['duration']} 分 （距離: {item['distance']}）")
+                        st.write(f"📏 **直線距離**: 約 {item['distance_km']} km")
                         st.markdown(f"📍 **住所**: [{item['address']}]({item['map_url']})")
                         st.divider()
                 else:
-                    st.info("指定された時間内で行けるゴルフ場が見つかりませんでした。時間を延ばして試してみてください。")
+                    st.info("指定された範囲内に行けるゴルフ場が見つかりませんでした。距離を広げて試してみてください。")
 
             except Exception as e:
                 st.error(f"エラーが発生しました: {e}")
@@ -179,12 +145,12 @@ selected_course = st.selectbox("ゴルフ場名を選択", options=course_list)
 if st.button("このゴルフ場までの時間を調べる", key="btn_single"):
     if not user_address_single:
         st.warning("ご自宅の住所を入力してください。")
-    elif selected_course == "（選択してください）":
+    elif selected_course == "（入力して選択）":
         st.warning("ゴルフ場名を選択してください。")
     else:
         with st.spinner("指定されたゴルフ場へのルートを計算中..."):
             try:
-                # 該当するゴルフ場データをCSVから検索
+                # ピンポイント検索のみ従来通り正確な所要時間・道路距離を計算
                 match_row = golf_df[golf_df['golf_name'] == selected_course]
                 
                 if not match_row.empty:
@@ -206,7 +172,6 @@ if st.button("このゴルフ場までの時間を調べる", key="btn_single"):
                     origins=[user_address_single],
                     destinations=[destination],
                     mode="driving",
-                    departure_time=datetime.now(),
                     language='ja'
                 )
 
@@ -216,7 +181,6 @@ if st.button("このゴルフ場までの時間を調べる", key="btn_single"):
                     duration_min = round(element['duration']['value'] / 60)
                     distance_km = element['distance']['text']
 
-                    # ★自宅住所(origin) から ゴルフ場(destination) へのルート案内URLを作成
                     origin_param_s = urllib.parse.quote(user_address_single)
                     dest_param_s = urllib.parse.quote(f"{c_name} {c_address}")
                     map_url = f"https://www.google.com/maps/dir/?api=1&origin={origin_param_s}&destination={dest_param_s}&travelmode=driving"
