@@ -47,7 +47,7 @@ st.caption("■入力地点から直線距離が近い順に主なゴルフ場�
 st.subheader("ゴルフ場の調べ方")
 user_address = st.text_input(
     "出発地点の住所(ご自宅など)", 
-    placeholder="例: 東京都港区新橋 / 大阪市北区梅田",
+    placeholder="例: 東京都港区新橋6-18-5",
     key="area_address"
 )
 
