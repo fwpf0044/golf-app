@@ -54,7 +54,7 @@ user_address = st.text_input(
 # 距離指定の選択肢
 distance_option = st.selectbox(
     "検索範囲（直線距離）を選択　◆各ゴルフ場の住所をクリックすると車のルートや時間が表示されます",
-    options=["直線で 20km 以内", "直線で 30km 以内", "直線で 50km 以内", "直線で 80km 以内"],
+    options=["直線で 20km 以内", "直線で 30km 以内", "直線で 50km 以内", "直線で 100km 以内"],
     index=2
 )
 
@@ -62,7 +62,7 @@ dist_limit_mapping = {
     "直線で 20km 以内": 20,
     "直線で 30km 以内": 30,
     "直線で 50km 以内": 50,
-    "直線で 80km 以内": 80,
+    "直線で 100km 以内": 100,
 }
 max_km = dist_limit_mapping[distance_option]
 
