@@ -38,13 +38,13 @@ def calculate_direct_distance(lat1, lon1, lat2, lon2):
 # ---------------------------------------------------------
 # UI設定
 # ---------------------------------------------------------
-st.title("⛳ 直線距離でゴルフ場検索(超節約版)")
+st.title("⛳ 距離でゴルフ場検索(β版)")
 st.caption("■入力地点から直線距離が近い順にゴルフ場を表示します。住所をクリックするとルート案内画面が開きます。")
 
 # ---------------------------------------------------------
-# 機能1: 直線距離での広域検索（APIコスト約0.75円/回）
+# 直線距離での広域検索（APIコスト約0.75円/回）
 # ---------------------------------------------------------
-st.subheader("直線距離でゴルフ場を調べる")
+st.subheader("距離でゴルフ場を調べる")
 user_address = st.text_input(
     "出発地点の住所(ご自宅など)", 
     placeholder="例: 東京都港区新橋 / 大阪府大阪市北区梅田",
@@ -53,7 +53,7 @@ user_address = st.text_input(
 
 # 距離指定の選択肢
 distance_option = st.selectbox(
-    "検索範囲（直線距離）を選択",
+    "検索範囲（直線距離）を選択 ※検索結果の「ゴルフ場住所」をクリックするとルートや時間が表示されます",
     options=["直線で 20km 以内", "直線で 30km 以内", "直線で 50km 以内", "直線で 80km 以内"],
     index=2
 )
@@ -121,87 +121,6 @@ if st.button("この条件で調べる", key="btn_area"):
                         st.divider()
                 else:
                     st.info("指定された範囲内に行けるゴルフ場が見つかりませんでした。距離を広げて試してみてください。")
-
-            except Exception as e:
-                st.error(f"エラーが発生しました: {e}")
-
-st.divider()
-
-# ---------------------------------------------------------
-# 機能2: 特定のゴルフ場を指定して距離・時間をピンポイント検索
-# ---------------------------------------------------------
-st.subheader("指定のゴルフ場までの時間を調べる")
-
-user_address_single = st.text_input(
-    "出発地点の住所(ご自宅など)", 
-    placeholder="例: 東京都港区新橋 / 大阪府大阪市北区梅田",
-    key="single_address"
-)
-
-# ゴルフ場名一覧を作成（ドロップダウンから選択）
-course_list = ["（入力して選択）"] + sorted(golf_df['golf_name'].dropna().unique().tolist())
-selected_course = st.selectbox("ゴルフ場名を選択", options=course_list)
-
-if st.button("このゴルフ場までの時間を調べる", key="btn_single"):
-    if not user_address_single:
-        st.warning("ご自宅の住所を入力してください。")
-    elif selected_course == "（入力して選択）":
-        st.warning("ゴルフ場名を選択してください。")
-    else:
-        with st.spinner("指定されたゴルフ場へのルートを計算中..."):
-            try:
-                # ピンポイント検索のみ従来通り正確な所要時間・道路距離を計算
-                match_row = golf_df[golf_df['golf_name'] == selected_course]
-                
-                if not match_row.empty:
-                    row = match_row.iloc[0]
-                    c_name = row['golf_name']
-                    c_address = row['address']
-                    c_url = row['url']
-                    if pd.notnull(row['lat']) and pd.notnull(row['lng']):
-                        destination = (row['lat'], row['lng'])
-                    else:
-                        destination = f"{c_name} {c_address}"
-                else:
-                    c_name = selected_course
-                    c_address = "住所情報"
-                    c_url = f"https://www.google.com/search?q={urllib.parse.quote(c_name)}"
-                    destination = c_name
-
-                matrix_result = gmaps.distance_matrix(
-                    origins=[user_address_single],
-                    destinations=[destination],
-                    mode="driving",
-                    language='ja'
-                )
-
-                element = matrix_result['rows'][0]['elements'][0]
-
-                if element.get('status') == 'OK':
-                    duration_min = round(element['duration']['value'] / 60)
-                    distance_km = element['distance']['text']
-
-                    origin_param_s = urllib.parse.quote(user_address_single)
-                    dest_param_s = urllib.parse.quote(f"{c_name} {c_address}")
-                    map_url = f"https://www.google.com/maps/dir/?api=1&origin={origin_param_s}&destination={dest_param_s}&travelmode=driving"
-
-                    st.success(f"「{user_address_single}」から「{c_name}」までの計算結果です！")
-                    st.divider()
-                    
-                    title_html_single = f"""
-                        <h3 style='margin-bottom:0; display:flex; align-items:center;'>
-                            ⛳&nbsp;<a href='{c_url}' target='_blank' style='text-decoration:none; color:#1E88E5; margin-right: 12px;'>{c_name}</a>
-                            <a href='{c_url}' target='_blank' style='font-size: 0.7em; font-weight: normal; color: #757575; text-decoration: none;'>
-                                ◆会員権価格を見る
-                            </a>
-                        </h3>
-                    """
-                    st.markdown(title_html_single, unsafe_allow_html=True)
-                    st.write(f"🚗 **所要時間**: 約 {duration_min} 分 （距離: {distance_km}）")
-                    st.markdown(f"📍 **住所**: [{c_address}]({map_url})")
-                    st.divider()
-                else:
-                    st.error("ルートの計算に失敗しました。住所やゴルフ場名をご確認ください。")
 
             except Exception as e:
                 st.error(f"エラーが発生しました: {e}")
