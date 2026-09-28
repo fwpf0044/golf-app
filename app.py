@@ -156,7 +156,7 @@ else:
     course_options = ["（上の検索欄に文字を入力してください）"] + sorted(golf_df['golf_name'].dropna().unique().tolist())
 
 selected_course = st.selectbox(
-    "2. 該当するゴルフ場を選択　◆ゴルフ場の住所をクリックすると車のルートや時間が表示されます",
+    "2. 該当するゴルフ場を選択",
     options=course_options,
     key="select_matched_course"
 )
