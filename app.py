@@ -139,8 +139,8 @@ user_address_single = st.text_input(
 )
 
 # ゴルフ場名一覧を作成（ドロップダウンから選択）
-course_list = ["（入力して選択） ◆ゴルフ場の住所をクリックすると車のルートや時間が表示されます"] + sorted(golf_df['golf_name'].dropna().unique().tolist())
-selected_course = st.selectbox("ゴルフ場名を選択", options=course_list)
+course_list = ["（入力して選択）"] + sorted(golf_df['golf_name'].dropna().unique().tolist())
+selected_course = st.selectbox("ゴルフ場名を選択 ◆ゴルフ場の住所をクリックすると車のルートや時間が表示されます", options=course_list)
 
 if st.button("このゴルフ場までの時間を調べる", key="btn_single"):
     if not user_address_single:
