@@ -139,7 +139,7 @@ user_address_single = st.text_input(
 )
 
 search_keyword = st.text_input(
-    "1. ゴルフ場名を検索（一部でもOK、入力してEnter）　◆ゴルフ場の住所をクリックすると車のルートや時間が表示されます", 
+    "1. ゴルフ場名を検索（一部でもOK、入力してEnter）", 
     placeholder="例: 東名 / 霞ヶ関 / 東京",
     key="course_keyword"
 )
@@ -156,7 +156,7 @@ else:
     course_options = ["（上の検索欄に文字を入力してください）"] + sorted(golf_df['golf_name'].dropna().unique().tolist())
 
 selected_course = st.selectbox(
-    "2. 該当するゴルフ場を選択",
+    "2. 該当するゴルフ場を選択　◆ゴルフ場の住所をクリックすると車のルートや時間が表示されます",
     options=course_options,
     key="select_matched_course"
 )
