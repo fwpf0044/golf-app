@@ -161,7 +161,7 @@ selected_course = st.selectbox(
     key="select_matched_course"
 )
 
-if st.button("このゴルフ場までの直線距離を調べる", key="btn_single"):
+if st.button("このゴルフ場までの距離を調べる", key="btn_single"):
     if not user_address_single:
         st.warning("ご自宅の住所を入力してください。")
     elif selected_course in ["（上の検索欄に文字を入力してください）", "（絞り込まれたリストから選択）", "（該当するゴルフ場がありません）"]:
