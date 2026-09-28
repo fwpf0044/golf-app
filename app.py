@@ -39,7 +39,7 @@ def calculate_direct_distance(lat1, lon1, lat2, lon2):
 # UI設定
 # ---------------------------------------------------------
 st.title("⛳ 距離でゴルフ場検索(β版)")
-st.caption("■入力地点から直線距離が近い順に主なゴルフ場を表示します。住所をクリックするとルート案内画面が開きます。")
+st.caption("■入力地点から直線距離が近い順にゴルフ場を表示します。住所をクリックするとルート案内画面が開きます。")
 
 # ---------------------------------------------------------
 # 機能1: 直線距離での広域検索（APIコスト約0.75円/回）
@@ -53,7 +53,7 @@ user_address = st.text_input(
 
 # 距離指定の選択肢
 distance_option = st.selectbox(
-    "検索範囲（直線距離）を選択  ◆各ゴルフ場の住所をクリックすると車のルートや時間が表示されます",
+    "検索範囲（直線距離）を選択  ◆各ゴルフ場の住所をクリックすると車のルートが表示されます",
     options=["直線で 20km 以内", "直線で 30km 以内", "直線で 50km 以内", "直線で 100km 以内"],
     index=2
 )
@@ -128,9 +128,9 @@ if st.button("この条件で調べる", key="btn_area"):
 st.divider()
 
 # ---------------------------------------------------------
-# 機能2: 特定のゴルフ場を指定して距離・時間をピンポイント検索
+# 機能2: 特定のゴルフ場を指定して「直線距離」をピンポイント検索
 # ---------------------------------------------------------
-st.subheader("指定のゴルフ場までの距離を調べる")
+st.subheader("指定のゴルフ場までの直線距離を調べる")
 
 user_address_single = st.text_input(
     "出発地点の住所(ご自宅など)", 
@@ -139,7 +139,7 @@ user_address_single = st.text_input(
 )
 
 search_keyword = st.text_input(
-    "1. ゴルフ場名を検索（一部でもOK、入力してEnter）", 
+    "1. ゴルフ場名を検索（一部でも可、入力してEnter）", 
     placeholder="例: 東名 / 霞ヶ関 / 東京",
     key="course_keyword"
 )
@@ -161,14 +161,23 @@ selected_course = st.selectbox(
     key="select_matched_course"
 )
 
-if st.button("このゴルフ場までの時間を調べる", key="btn_single"):
+if st.button("このゴルフ場までの直線距離を調べる", key="btn_single"):
     if not user_address_single:
         st.warning("ご自宅の住所を入力してください。")
     elif selected_course in ["（上の検索欄に文字を入力してください）", "（絞り込まれたリストから選択）", "（該当するゴルフ場がありません）"]:
         st.warning("ゴルフ場名を正しく選択または入力してください。")
     else:
-        with st.spinner("指定されたゴルフ場へのルートを計算中..."):
+        with st.spinner("直線距離を計算中..."):
             try:
+                # 住所から座標を取得（Geocoding API: 1リクエスト）
+                geocode_result_s = gmaps.geocode(user_address_single, language='ja')
+                if not geocode_result_s:
+                    st.error("入力された住所の場所を特定できませんでした。")
+                    st.stop()
+                    
+                u_lat = geocode_result_s[0]['geometry']['location']['lat']
+                u_lng = geocode_result_s[0]['geometry']['location']['lng']
+
                 match_row = golf_df[golf_df['golf_name'] == selected_course]
                 
                 if not match_row.empty:
@@ -176,50 +185,35 @@ if st.button("このゴルフ場までの時間を調べる", key="btn_single"):
                     c_name = row['golf_name']
                     c_address = row['address']
                     c_url = row['url']
-                    if pd.notnull(row['lat']) and pd.notnull(row['lng']):
-                        destination = (row['lat'], row['lng'])
-                    else:
-                        destination = f"{c_name} {c_address}"
+                    c_lat = row['lat']
+                    c_lng = row['lng']
                 else:
-                    c_name = selected_course
-                    c_address = "住所情報"
-                    c_url = f"https://www.google.com/search?q={urllib.parse.quote(c_name)}"
-                    destination = c_name
+                    st.error("ゴルフ場データが見つかりませんでした。")
+                    st.stop()
 
-                matrix_result = gmaps.distance_matrix(
-                    origins=[user_address_single],
-                    destinations=[destination],
-                    mode="driving",
-                    language='ja'
-                )
+                # Python内部で直線距離を計算（API不要）
+                dist_single = calculate_direct_distance(u_lat, u_lng, c_lat, c_lng)
 
-                element = matrix_result['rows'][0]['elements'][0]
+                origin_param_s = urllib.parse.quote(user_address_single)
+                dest_param_s = urllib.parse.quote(f"{c_name} {c_address}")
+                map_url = f"https://www.google.com/maps/dir/?api=1&origin={origin_param_s}&destination={dest_param_s}&travelmode=driving"
 
-                if element.get('status') == 'OK':
-                    duration_min = round(element['duration']['value'] / 60)
-                    distance_km = element['distance']['text']
-
-                    origin_param_s = urllib.parse.quote(user_address_single)
-                    dest_param_s = urllib.parse.quote(f"{c_name} {c_address}")
-                    map_url = f"https://www.google.com/maps/dir/?api=1&origin={origin_param_s}&destination={dest_param_s}&travelmode=driving"
-
-                    st.success(f"「{user_address_single}」から「{c_name}」までの計算結果です！")
-                    st.divider()
-                    
-                    title_html_single = f"""
-                        <h3 style='margin-bottom:0; display:flex; align-items:center;'>
-                            ⛳&nbsp;<a href='{c_url}' target='_blank' style='text-decoration:none; color:#1E88E5; margin-right: 12px;'>{c_name}</a>
-                            <a href='{c_url}' target='_blank' style='font-size: 0.7em; font-weight: normal; color: #757575; text-decoration: none;'>
-                                ◆会員権価格を見る
-                            </a>
-                        </h3>
-                    """
-                    st.markdown(title_html_single, unsafe_allow_html=True)
-                    st.write(f"🚗 **所要時間**: 約 {duration_min} 分 （距離: {distance_km}）")
-                    st.markdown(f"📍 **住所**: [{c_address}]({map_url})")
-                    st.divider()
-                else:
-                    st.error("ルートの計算に失敗しました。住所やゴルフ場名をご確認ください。")
+                st.success(f"「{user_address_single}」から「{c_name}」までの計算結果です！")
+                st.divider()
+                
+                title_html_single = f"""
+                    <h3 style='margin-bottom:0; display:flex; align-items:center;'>
+                        ⛳&nbsp;<a href='{c_url}' target='_blank' style='text-decoration:none; color:#1E88E5; margin-right: 12px;'>{c_name}</a>
+                        <a href='{c_url}' target='_blank' style='font-size: 0.7em; font-weight: normal; color: #757575; text-decoration: none;'>
+                            ◆会員権価格を見る
+                        </a>
+                    </h3>
+                """
+                st.markdown(title_html_single, unsafe_allow_html=True)
+                st.write(f"📏 **直線距離**: 約 {round(dist_single, 1)} km")
+                st.markdown(f"📍 **住所**: [{c_address}]({map_url})")
+                st.caption("※住所リンクをクリックするとGoogle Mapsが開き、実際のルート・所要時間を確認できます。")
+                st.divider()
 
             except Exception as e:
                 st.error(f"エラーが発生しました: {e}")
