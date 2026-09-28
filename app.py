@@ -139,39 +139,37 @@ user_address_single = st.text_input(
 )
 
 search_keyword = st.text_input(
-    "ゴルフ場名を入力（一部分を入れると下に候補が表示されます）　◆ゴルフ場の住所をクリックすると車のルートや時間が表示されます", 
+    "1. ゴルフ場名を検索（キーワードを入力してEnter）", 
     placeholder="例: 東名 / 霞ヶ関 / 東京",
     key="course_keyword"
 )
 
-# キーワード入力時に候補をリアルタイムで検索して表示
-selected_target_course = None
-
+# キーワードに応じてプルダウンの選択肢を動的に絞り込む
 if search_keyword:
     matched_df = golf_df[golf_df['golf_name'].str.contains(search_keyword, case=False, na=False)]
-    candidate_names = matched_df['golf_name'].dropna().unique().tolist()
-    
+    candidate_names = sorted(matched_df['golf_name'].dropna().unique().tolist())
     if candidate_names:
-        st.caption(f"💡 該当するゴルフ場が {len(candidate_names)} 件見つかりました:")
-        selected_target_course = st.radio(
-            "調べるゴルフ場を選択してください:",
-            options=candidate_names,
-            key="radio_course_select"
-        )
+        course_options = ["（絞り込まれたリストから選択）"] + candidate_names
     else:
-        st.warning("一致するゴルフ場が見つかりませんでした。入力文字を変更してみてください。")
+        course_options = ["（該当するゴルフ場がありません）"]
+else:
+    course_options = ["（上の検索欄に文字を入力してください）"] + sorted(golf_df['golf_name'].dropna().unique().tolist())
+
+selected_course = st.selectbox(
+    "2. 該当するゴルフ場を選択",
+    options=course_options,
+    key="select_matched_course"
+)
 
 if st.button("このゴルフ場までの時間を調べる", key="btn_single"):
     if not user_address_single:
         st.warning("ご自宅の住所を入力してください。")
-    elif not search_keyword:
-        st.warning("ゴルフ場名を入力してください。")
-    elif not selected_target_course:
-        st.warning("候補からゴルフ場を選択してください。")
+    elif selected_course in ["（上の検索欄に文字を入力してください）", "（絞り込まれたリストから選択）", "（該当するゴルフ場がありません）"]:
+        st.warning("ゴルフ場名を正しく選択または入力してください。")
     else:
         with st.spinner("指定されたゴルフ場へのルートを計算中..."):
             try:
-                match_row = golf_df[golf_df['golf_name'] == selected_target_course]
+                match_row = golf_df[golf_df['golf_name'] == selected_course]
                 
                 if not match_row.empty:
                     row = match_row.iloc[0]
@@ -183,7 +181,7 @@ if st.button("このゴルフ場までの時間を調べる", key="btn_single"):
                     else:
                         destination = f"{c_name} {c_address}"
                 else:
-                    c_name = selected_target_course
+                    c_name = selected_course
                     c_address = "住所情報"
                     c_url = f"https://www.google.com/search?q={urllib.parse.quote(c_name)}"
                     destination = c_name
