@@ -53,8 +53,8 @@ user_address = st.text_input(
 
 # 距離指定の選択肢
 distance_option = st.selectbox(
-    "検索範囲（直線距離）を選択 　◆各ゴルフ場の住所をクリックすると車のルートや時間が表示されます",
-    options=["直線で 20km 以内", "直線で 30km 以内", "直線で 50km 以内", "直線で 80km 以内"],
+    "検索範囲（直線距離）を選択  ◆各ゴルフ場の住所をクリックすると車のルートや時間が表示されます",
+    options=["直線で 20km 以内", "直線で 30km 以内", "直線で 50km 以内", "直線で 100km 以内"],
     index=2
 )
 
@@ -138,23 +138,26 @@ user_address_single = st.text_input(
     key="single_address"
 )
 
-# ゴルフ場名一覧を作成（ドロップダウンから選択）
-course_list = ["（入力して選択）"] + sorted(golf_df['golf_name'].dropna().unique().tolist())
-selected_course = st.selectbox("ゴルフ場名を選択  　◆ゴルフ場の住所をクリックすると車のルートや時間が表示されます", options=course_list)
+# IME日本語入力エラーを防ぐため、通常のテキスト入力枠に変更
+search_keyword = st.text_input(
+    "ゴルフ場名を入力（一部の文字でもOK）", 
+    placeholder="例: 東京カントリー / 霞ヶ関",
+    key="course_keyword"
+)
 
 if st.button("このゴルフ場までの時間を調べる", key="btn_single"):
     if not user_address_single:
         st.warning("ご自宅の住所を入力してください。")
-    elif selected_course == "（入力して選択）":
-        st.warning("ゴルフ場名を選択してください。")
+    elif not search_keyword:
+        st.warning("ゴルフ場名を入力してください。")
     else:
         with st.spinner("指定されたゴルフ場へのルートを計算中..."):
             try:
-                # ピンポイント検索のみ従来通り正確な所要時間・道路距離を計算
-                match_row = golf_df[golf_df['golf_name'] == selected_course]
+                # 入力されたキーワードで部分一致検索
+                matched = golf_df[golf_df['golf_name'].str.contains(search_keyword, case=False, na=False)]
                 
-                if not match_row.empty:
-                    row = match_row.iloc[0]
+                if not matched.empty:
+                    row = matched.iloc[0]
                     c_name = row['golf_name']
                     c_address = row['address']
                     c_url = row['url']
@@ -163,7 +166,7 @@ if st.button("このゴルフ場までの時間を調べる", key="btn_single"):
                     else:
                         destination = f"{c_name} {c_address}"
                 else:
-                    c_name = selected_course
+                    c_name = search_keyword
                     c_address = "住所情報"
                     c_url = f"https://www.google.com/search?q={urllib.parse.quote(c_name)}"
                     destination = c_name
