@@ -11,12 +11,25 @@ import os
 API_KEY = st.secrets.get("GOOGLE_MAPS_API_KEY", os.environ.get("GOOGLE_MAPS_API_KEY"))
 gmaps = googlemaps.Client(key=API_KEY)
 
-# CSVデータの読み込み
+# ---------------------------------------------------------
+# 2. 高速化（キャッシュ）設定
+# ---------------------------------------------------------
+# ① CSVデータの読み込みキャッシュ（※すでに完璧に設定されていました！）
 @st.cache_data
 def load_golf_data():
     return pd.read_csv("golf_courses.csv")
 
 golf_df = load_golf_data()
+
+# ② 【追加】Google API通信のキャッシュ（同じ住所の検索を爆速化＆APIコスト節約）
+@st.cache_data(ttl=86400) # 1日（86400秒）記憶する設定
+def get_geocode_lat_lng(address):
+    result = gmaps.geocode(address, language='ja')
+    if not result:
+        return None, None
+    lat = result[0]['geometry']['location']['lat']
+    lng = result[0]['geometry']['location']['lng']
+    return lat, lng
 
 # 直線距離計算用の関数 (ヒュベニの公式)
 def calculate_direct_distance(lat1, lon1, lat2, lon2):
@@ -42,7 +55,7 @@ st.title("⛳ 距離でゴルフ場検索")
 st.caption("■入力地点から直線距離が近い順に主なゴルフ場を表示します。住所をクリックするとルート案内も見られます。※入力した情報の収集はされませんのでぜひご活用ください。")
 
 # ---------------------------------------------------------
-# 機能1: 直線距離での広域検索（APIコスト約0.75円/回）
+# 機能1: 直線距離での広域検索
 # ---------------------------------------------------------
 st.subheader("自宅からの距離でゴルフ場を調べる")
 user_address = st.text_input(
@@ -53,7 +66,7 @@ user_address = st.text_input(
 
 # 距離指定の選択肢
 distance_option = st.selectbox(
-    "検索範囲（直線距離）を選択  　◆各ゴルフ場の住所をクリックすると車のルート・所要時間が見られます",
+    "検索範囲（直線距離）を選択   ◆各ゴルフ場の住所をクリックすると車のルート・所要時間が見られます",
     options=["直線で 20km 以内", "直線で 30km 以内", "直線で 50km 以内", "直線で 100km 以内"],
     index=2
 )
@@ -72,14 +85,12 @@ if st.button("この条件で調べる", key="btn_area"):
     else:
         with st.spinner("近隣のゴルフ場を精査中..."):
             try:
-                # 1回だけGeocoding APIを呼び出して入力住所の座標を取得
-                geocode_result = gmaps.geocode(user_address, language='ja')
-                if not geocode_result:
+                # キャッシュ化した関数で座標を取得
+                user_lat, user_lng = get_geocode_lat_lng(user_address)
+                
+                if user_lat is None or user_lng is None:
                     st.error("入力された住所の場所を特定できませんでした。")
                     st.stop()
-                    
-                user_lat = geocode_result[0]['geometry']['location']['lat']
-                user_lng = geocode_result[0]['geometry']['location']['lng']
 
                 results = []
                 # 全ゴルフ場データに対してPython内部で直線距離を計算
@@ -169,14 +180,12 @@ if st.button("このゴルフ場までの距離を調べる", key="btn_single"):
     else:
         with st.spinner("直線距離を計算中..."):
             try:
-                # 住所から座標を取得（Geocoding API: 1リクエスト）
-                geocode_result_s = gmaps.geocode(user_address_single, language='ja')
-                if not geocode_result_s:
+                # キャッシュ化した関数で座標を取得（API呼び出し）
+                u_lat, u_lng = get_geocode_lat_lng(user_address_single)
+                
+                if u_lat is None or u_lng is None:
                     st.error("入力された住所の場所を特定できませんでした。")
                     st.stop()
-                    
-                u_lat = geocode_result_s[0]['geometry']['location']['lat']
-                u_lng = geocode_result_s[0]['geometry']['location']['lng']
 
                 match_row = golf_df[golf_df['golf_name'] == selected_course]
                 
