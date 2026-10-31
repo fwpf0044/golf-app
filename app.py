@@ -8,7 +8,10 @@ import os
 # ---------------------------------------------------------
 # 1. APIキーの設定 (Streamlit Secrets / 環境変数)
 # ---------------------------------------------------------
-API_KEY = st.secrets.get("GOOGLE_MAPS_API_KEY", os.environ.get("GOOGLE_MAPS_API_KEY"))
+API_KEY = os.environ.get("GOOGLE_MAPS_API_KEY")
+if not API_KEY:
+    # ローカルテストやStreamlit環境用の予備
+    API_KEY = st.secrets["GOOGLE_MAPS_API_KEY"]
 gmaps = googlemaps.Client(key=API_KEY)
 
 # ---------------------------------------------------------
